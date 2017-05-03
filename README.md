@@ -36,3 +36,13 @@
 * Multi-Scale Testing
 * HFlip
 * Box Votinng
+
+
+Tricks的实现划分在以下5个文件夹中：
+* dataprocess
+* regionproposal
+* fastrcnn
+* postprocess
+* ensumble
+
+上述代码尝试做成平台无关，与计算框架相关的代码都在*PlatformRelated*文件夹中
