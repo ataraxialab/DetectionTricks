@@ -3,13 +3,22 @@
 bash script/vgg_voc07.sh 0,1
 
 
-## 各个网络在VOC07上的meanAP
+## 各个网络在MXNET，VOC07上的速度和meanAP
 
 | 网络模型 | GPUs | meanAP | 迭代速度 |
 | ------| ------ | ------ | ------ |
-| VGG16 | 4xP4 | 0.7 | ~8.5img/s |
+| VGG16 | 4xP100 | 0.7 | ~11.8img/s |
+| VGG16 | 2xP100 | ? | ~11.5img/s |
+| VGG16 | 2xP40 | ? | ~8.5img/s |
+| VGG16 | 1xP100 | ? | ~7img/s |
+| VGG16 | 1x40 | ? | ~6.2img/s |
 | ResNet101 | 4xP100 | 0.74 | ~8.5img/s |
 | ResNet200 | 4xP100 | ? | ~5.5img/s |
+
+
+### insights
+* 2GPU和4GPU的训练速度差不多
+
 
 ## 验证ResNet网络
 
