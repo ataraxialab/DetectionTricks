@@ -9,7 +9,7 @@ bash script/vgg_voc07.sh 0,1
 | ------| ------ | ------ | ------ |
 | VGG16 | 4xP100 | 0.7019 | ~11.5img/s |
 | ResNet101 | 4xP100 | 0.74 | ~8.5img/s |
-| ResNet152 | 4xP100 | ？ | ~6.5img/s |
+| ResNet152 | 4xP100 | 0.7522 | ~6.5img/s |
 | ResNet200 | 4xP100 | 0.75 | ~5.5img/s |
 
 ## 验证ResNet网络
