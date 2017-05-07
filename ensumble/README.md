@@ -29,8 +29,7 @@
   | YOLO9000 | | | | | | | | | |
 
 ## Results on ImageNet Sub
-  验证ImageNet闭环
-
+* 验证ImageNet闭环
 
 | 网络 | Original | FPN | RoIAlign | FPN + RoIAlign | Identity Mapping | Pretrain on LOC | RPN | RCNN |
 | ------| ------ | ------ | ------ |
