@@ -32,7 +32,7 @@
 * 验证ImageNet闭环
 
 | 网络 | Original | FPN | RoIAlign | FPN + RoIAlign | Identity Mapping | Pretrain on LOC | RPN | RCNN |
-| ------| ------ | ------ | ------ |
+  | ------| ------ | ------ | ------ | ------| ------ | ------ | ------ | ------ |
 | VGG19	| mAP=0.7019 | | | | | | | | 	 	 	 	 
 | ResNet101 | mAP=0.7453 | | | | | | | |
 | ResNet152	| mAP=0.7522 | | | | | |  | |
