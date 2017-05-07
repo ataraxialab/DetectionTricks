@@ -13,20 +13,20 @@
 
 
 ## Results on VOC07
-验证网络是否work，找GPUs的最佳实践
+* 验证网络是否work，找GPUs的最佳实践
 
-| 网络 | Original | FPN | RoIAlign | FPN + RoIAlign | Identity Mapping | Pretrain on LOC | RPN | RCNN |
-| ------| ------ | ------ | ------ |
-| VGG19	| mAP=0.7019 | | | | | | | | 	 	 	 	 
-| ResNet101 | mAP=0.7453 | | | | | | | |
-| ResNet152	| mAP=0.7522 | | | | | |  | |
-| ResNet200	| mAP=0.75 | | | | | | |  |
-| ResNeXt50  | | | | | | | | | 	 	 	 	 	 	 	 	 
-| ResNeXt101 | | | | | | | | | 	 	 	 	 	 	 
-| ResNeXt200 | | | | | | | | |	 	 	 	 	 	 
-| Inception-V3 | | | | | | | | | 	 	 	 	 	 	 	 
-| Inception-ResNet-V2	 | | | | | | | | |
-| YOLO9000 | | | | | | | | | |
+  | 网络 | Original | FPN | RoIAlign | FPN + RoIAlign | Identity Mapping | Pretrain on LOC | RPN | RCNN |
+  | ------| ------ | ------ | ------ | ------| ------ | ------ | ------ | ------ |
+  | VGG19	| mAP=0.7019 | | | | | | | | 	 	 	 	 
+  | ResNet101 | mAP=0.7453 | | | | | | | |
+  | ResNet152	| mAP=0.7522 | | | | | |  | |
+  | ResNet200	| mAP=0.75 | | | | | | |  |
+  | ResNeXt50  | | | | | | | | |
+  | ResNeXt101 | | | | | | | | |
+  | ResNeXt200 | | | | | | | | |
+  | Inception-V3 | | | | | | | | | 	 	 	 	 	 	 	 
+  | Inception-ResNet-V2	 | | | | | | | | |
+  | YOLO9000 | | | | | | | | | |
 
 ## Results on ImageNet Sub
   验证ImageNet闭环
