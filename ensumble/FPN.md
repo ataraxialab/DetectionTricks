@@ -37,7 +37,7 @@ https://github.com/ataraxialab/faster_rcnn_pytorch/blob/master/faster_rcnn/resne
 在resnet类的forward函数中，加入如下代码:
 https://github.com/ataraxialab/faster_rcnn_pytorch/blob/dev/faster_rcnn/resnet_FPN.py#L155-L165
 
-### faster_rcnn.py
+### 2 faster_rcnn.py
 
 * 在faster rcnn的init函数中加入新的conv层，用于FPN中所需的conv1*1和conv3*3:
 https://github.com/ataraxialab/faster_rcnn_pytorch/blob/dev/faster_rcnn/faster_rcnn_resnet152_imgsize600_FPN.py#L178-L194
@@ -60,6 +60,6 @@ https://github.com/ataraxialab/faster_rcnn_pytorch/blob/dev/faster_rcnn/faster_r
 *	最后，计算loss的时候为了打印log，需要把多层的tp,tf,fg_cnt,bg_cnt进行相加
 https://github.com/ataraxialab/faster_rcnn_pytorch/blob/dev/faster_rcnn/faster_rcnn_resnet152_imgsize600_FPN.py#L282-L296
 
-### network.py
+### 3 network.py
 Load pretrained参数的时候和之前稍微有所不同：
 https://github.com/ataraxialab/faster_rcnn_pytorch/blob/dev/faster_rcnn/network_FPN.py#L85-L91
