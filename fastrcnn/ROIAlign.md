@@ -23,7 +23,7 @@ ROI pooling的操作包括两个部分：
 3)	参数解析：pooled_height, pooled_width等。   
 4)	然后传入到ROIPoolForwardKernel中进行具体计算。    
  
-###2.	ROIPoolForwardKernel:
+### 2.	ROIPoolForwardKernel:
 https://github.com/ataraxialab/mxnet/blob/master/src/operator/roi_pooling.cu#L17-L87   
 1)	计算原图的ROI区域在feature map上的ROI_f区域，注意这里有取整操作：   
 https://github.com/ataraxialab/mxnet/blob/master/src/operator/roi_pooling.cu#L41-L48   
