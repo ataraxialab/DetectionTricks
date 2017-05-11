@@ -1,7 +1,7 @@
 # ImageNet Detection Tricks
 
 ## 基础模型
-* ResNet-101 Variants
+* [ResNet-101 Variants](http://op3uxikvk.bkt.clouddn.com/resnet101-params)
 ### 使用多个差异很大的CNN模型 - diversity matters!
 * 7 * BN-Inception (32 Layers)
 * 2 * MSRA-Net (22 Layers)
