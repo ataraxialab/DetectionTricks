@@ -63,31 +63,32 @@ struct ROIAlignParam : public dmlc::Parameter<ROIAlignParam>{
 2. ROIAlignOp:主要实现ROIAlign operator的前向和反向传播的定义  
 reference: https://github.com/ElaineBao/mxnet/blob/master/example/rcnn/rcnn/symbol/roi_align-inl.h#L43-L126  
 ```
-		class ROIAlignOp : public Operator {
-		private:
-			ROIAlignParam param_;
-		public：
-			explicit ROIAlignOp(ROIAlignParam p); //构造函数传入ROIAlignParam
-			virtual void Forward(...){ //前向传播
-				//check输入输出维度的正确性
-				...
-				//然后调用ROIAlignForward进行计算
-				ROIAlignForward(...);				
-			}
-			virtual void Backward(...){ //反向传播
-				//check输入输出维度的正确性
-				...
-				//然后调用ROIAlignBackwardAcc进行计算
-				ROIAlignBackwardAcc(...);
-		}
-		```
+class ROIAlignOp : public Operator {
+private:
+	ROIAlignParam param_;
+public：
+	explicit ROIAlignOp(ROIAlignParam p); //构造函数传入ROIAlignParam
+	virtual void Forward(...){ //前向传播
+		//check输入输出维度的正确性
+		...
+		//然后调用ROIAlignForward进行计算
+		ROIAlignForward(...);				
+	}
+	virtual void Backward(...){ //反向传播
+		//check输入输出维度的正确性
+		...
+		//然后调用ROIAlignBackwardAcc进行计算
+		ROIAlignBackwardAcc(...);
+	}
+}
+```
 3. ROIAlignProp:主要实现外部接口，例如在ROIAlignProp中有一个 Operator* CreateOperator()调用ROIAlignOp创建具体的ROIAlignOp,但是ROIAlignProb还不是直接与外部有接口，需要进一步注册  
 reference: https://github.com/ElaineBao/mxnet/blob/master/example/rcnn/rcnn/symbol/roi_align-inl.h#L133-L229  
 4. 上述操作定义完成之后进行注册:注册时接口为ROIAlignProp，ROIAlign为注册的名字，add_argument是为了方便使用者得到该操作的操作参数。 
 reference: https://github.com/ElaineBao/mxnet/blob/master/example/rcnn/rcnn/symbol/roi_align.cc#L277-L287   
 ```
 DMLC_REGISTER_PARAMETER(ROIAlignParam);
-	MXNET_REGISTER_OP_PROPERTY(ROIAlign, ROIAlignProp)
+MXNET_REGISTER_OP_PROPERTY(ROIAlign, ROIAlignProp)
 	.describe("Performs region of interest(ROI) align on the input array.")
 	.add_argument("data", "NDArray-or-Symbol", "The input array to the pooling operator, "
                                             " a 4D Feature maps ")
@@ -96,7 +97,7 @@ DMLC_REGISTER_PARAMETER(ROIAlignParam);
 	"corners of designated region of interest. `batch_index` indicates the index of corresponding "
 	"image in the input array")
 	.add_arguments(ROIAlignParam::__FIELDS__());
-	```
+```
 
 ## ROIAlign关键代码解析：
 ROIAlignForward和ROIAlignBackwardAcc各自有.cu和.cc的实现版本，分别用于GPU和CPU的运算。下面以GPU版本为例解析ROIAlign的前向和反向传播代码。    
