@@ -41,7 +41,7 @@
   | ResNeXt101 | | | | | | | | |
   | ResNeXt200 | | | | | | | | |
   | Inception-V3 | | | | | | | | |
-  | ResNeXt101 | | | | | | | | |
+  | Inception-ResNet-V2 | | | | | | | | |
   | YOLO9000 | | | | | | | | |
 
 | ResNet152 | Running 4images/s(4Up100) | | | | | | | |
