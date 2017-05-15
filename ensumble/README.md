@@ -33,14 +33,14 @@
 
   | 网络 | Original | FPN | RoIAlign | FPN + RoIAlign | Identity Mapping | Pretrain on LOC | RPN | RCNN |
   | ------| ------ | ------ | ------ | ------| ------ | ------ | ------ | ------ |
-  | VGG19	| mAP=0.7019 | | | | | | | | 	 	 	 	 
-  | ResNet101 | mAP=0.7453 | | 2GPU(M40): 3.26samples/sec (running by byx) | | | | | |
-  | ResNet152	| mAP=0.7522 | | | | | |  | |
-  | ResNet200	| mAP=0.75 | | | | | | |  |
+  | VGG19	| | | | | | | | | 	 	 	 	 
+  | ResNet101 | mAP=0.38 |@zenk | @baobao| | | | | |
+  | ResNet152	| Running 4images／s（4Up100） | | | | | |  | |
+  | ResNet200	| | | | | | | |  |
   | ResNeXt50  | | | | | | | | | 	 	 	 	 	 	 	 	 
   | ResNeXt101 | | | | | | | | | 	 	 	 	 	 	 
   | ResNeXt200 | | | | | | | | |	 	 	 	 	 	 
-  | Inception-V3 | | | | | | | | | 	 	 	 	 	 	 	 
+  | Inception-V3 |Running 7images／s（4Up40）  | | | | | | | | 	 	 	 	 	 	 	 
   | Inception-ResNet-V2	 | | | | | | | | |
   | YOLO9000 | | | | | | | | | |
 
@@ -50,8 +50,8 @@
   | 网络 | Original | FPN | RoIAlign | FPN + RoIAlign | Identity Mapping | Pretrain on LOC | RPN | RCNN |
   | ------| ------ | ------ | ------ | ------| ------ | ------ | ------ | ------ |
   | VGG19	| | | | | | | | | 	 	 	 	 
-  | ResNet101 | | | | | | | | |
-  | ResNet152	| | | | | | 1GPU(P40): 2.10samples/sec 2GPU(P40): 3.70samples/sec 4GPU(P40): 5.2samples/sec (running)|  | |
+  | ResNet101 | mAP=0.482 | | | | | | | |
+  | ResNet152 | @zzj | | | | | 1GPU(P40): 2.10samples/sec 2GPU(P40): 3.70samples/sec 4GPU(P40): 5.2samples/sec (running)|  | |
   | ResNet200	| | | | | | | |  |
   | ResNeXt50  | | | | | | | | | 	 	 	 	 	 	 	 	 
   | ResNeXt101 | | | | | | | | | 	 	 	 	 	 	 
