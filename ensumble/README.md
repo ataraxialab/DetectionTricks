@@ -34,7 +34,7 @@
   | 网络 | Original | FPN | RoIAlign | FPN + RoIAlign | Identity Mapping | Pretrain on LOC | RPN | RCNN |
   | ------| ------ | ------ | ------ | ------| ------ | ------ | ------ | ------ |
   | VGG19 | | | | | | | | |
-  | ResNet101 | | | | | | | | |
+  | ResNet101 | mAP=0.38 | | | | | | | |
   | ResNet101 | mAP=0.38 | | | | | | | |
 
 
