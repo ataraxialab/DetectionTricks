@@ -131,3 +131,24 @@ https://github.com/ElaineBao/mxnet/blob/master/example/rcnn/rcnn/symbol/roi_alig
 https://github.com/ElaineBao/mxnet/blob/master/example/rcnn/rcnn/symbol/roi_align.cu#L189-L218  
 3) 如果(h,w)是max_idx_x,max_idx_y中记录的位置的4个相邻位置之一，则按照双线性插值进行求导。  
 https://github.com/ElaineBao/mxnet/blob/master/example/rcnn/rcnn/symbol/roi_align.cu#L220-L249  
+
+## ROIAlign的使用方法：
+1. 新建容器：
+例如：kirk services run your-container-name -i ataraxia/ava-training-mxnet-det:opencv3-py27-cuda8-cudnn5  --unit-type G_2U_TESLA_M40_24GB --cmd="sleep 999999" --metadata="NFS=/nfs/datastore:/disk2:rw"
+2. 加入ROIAlign：
+将roi_align-inl.h, roi_align.cu, roi_align.cc放入/opt/mxnet/example/rcnn/operator/下
+3. 编译：
+RUN `make` in `/opt/mxnet/`
+4. 使用：
+ROIAlign的使用方法和ROIPooling完全一样，例如，在symbol_resnet.py中，使用ROIPooling的姿势为：
+```
+roi_pool = mx.symbol.ROIPooling(
+        name='roi_pool5', data=conv_feat, rois=rois, pooled_size=(14, 14), spatial_scale=1.0 / config.RCNN_FEAT_STRIDE)
+
+```
+则使用ROIAlign的姿势为：
+```
+roi_align = mx.symbol.ROIAlign(
+        name='roi_align5', data=conv_feat, rois=rois, pooled_size=(14, 14), spatial_scale=1.0 / config.RCNN_FEAT_STRIDE)
+
+```
