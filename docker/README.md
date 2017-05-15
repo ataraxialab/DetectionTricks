@@ -1,7 +1,5 @@
 # 基础镜像
 
-## mxnet
-
 * 基础镜像： mxnet
 * 训练镜像：
     * 提供 entrypoint.sh，使用 dumb-init 为 PID=1 进程规避 \<defunc\> 问题
@@ -9,5 +7,5 @@
 
 ```bash
 $ docker build -t ava-mxnet:gpu -f gpu.Dockerfile .
-$ docker build -t ava-training-mxnet:gpu -f tgpu.Det.Dockerfile .
+$ docker build -t ava-training-mxnet:gpu -f tgpu.det.Dockerfile .
 ```
