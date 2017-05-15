@@ -37,6 +37,9 @@
   | ResNet101 | mAP=0.38 | @zenk | @baobao | | | | | |
   | ResNet152 | | | | | | | | |
   | ResNet200 | | | | | | | | |
+  | ResNeXt50 | | | | | | | | |
+  | ResNeXt101 | | | | | | | | |
+  | ResNeXt200 | | | | | | | | |
 
 | ResNet152 | Running 4images/s(4Up100) | | | | | | | |
   | ResNet200 | | | | | | | |  |
