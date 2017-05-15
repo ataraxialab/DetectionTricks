@@ -51,7 +51,7 @@
   | ------| ------ | ------ | ------ | ------| ------ | ------ | ------ | ------ |
   | VGG19	| | | | | | | | | 	 	 	 	 
   | ResNet101 | | | | | | | | |
-  | ResNet152	| | | | | | 1GPU(P40): 2.10samples/sec 2GPU(P40): 3.70samples/sec 3GPU(P40): 5.2samples/sec(running)|  | |
+  | ResNet152	| | | | | | 1GPU(P40): 2.10samples/sec 2GPU(P40): 3.70samples/sec 4GPU(P40): 5.2samples/sec (running)|  | |
   | ResNet200	| | | | | | | |  |
   | ResNeXt50  | | | | | | | | | 	 	 	 	 	 	 	 	 
   | ResNeXt101 | | | | | | | | | 	 	 	 	 	 	 
