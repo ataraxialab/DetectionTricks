@@ -34,7 +34,8 @@
   | 网络 | Original | FPN | RoIAlign | FPN + RoIAlign | Identity Mapping | Pretrain on LOC | RPN | RCNN |
   | ------| ------ | ------ | ------ | ------| ------ | ------ | ------ | ------ |
   | VGG19 | | | | | | | | |
-  | ResNet101 | mAP=0.38 | @zenk | @baobao | | | | | |
+  | ResNet101 | mAP=0.38 | | | | | | | |
+
 
 ## Results on ImageNet Full
 训练Baseline，得到最终结果
