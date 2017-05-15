@@ -24,7 +24,7 @@
   | ResNeXt50  | | | | | | | | |
   | ResNeXt101 | | | | | | | | |
   | ResNeXt200 | | | | | | | | |
-  | Inception-V3 | | | | | | | | | 	 	 	 	 	 	 	 
+  | Inception-V3 | MAP=0.5956| | | | | | | | 	 	 	 	 	 	 	 
   | Inception-ResNet-V2	 | | | | | | | | |
   | YOLO9000 | | | | | | | | | |
 
