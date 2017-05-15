@@ -35,11 +35,14 @@
   | ------| ------ | ------ | ------ | ------| ------ | ------ | ------ | ------ |
   | VGG19 | | | | | | | | |
   | ResNet101 | mAP=0.38 | @zenk | @baobao | | | | | |
-  | ResNet152 | | | | | | | | |
+  | ResNet152 | 4xP100:7img/s Running | | | | | | | |
   | ResNet200 | | | | | | | | |
   | ResNeXt50 | | | | | | | | |
   | ResNeXt101 | | | | | | | | |
   | ResNeXt200 | | | | | | | | |
+  | Inception-V3 | | | | | | | | |
+  | ResNeXt101 | | | | | | | | |
+  | YOLO9000 | | | | | | | | |
 
 | ResNet152 | Running 4images/s(4Up100) | | | | | | | |
   | ResNet200 | | | | | | | |  |
