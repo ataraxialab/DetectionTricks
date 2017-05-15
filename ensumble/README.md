@@ -35,7 +35,10 @@
   | ------| ------ | ------ | ------ | ------| ------ | ------ | ------ | ------ |
   | VGG19 | | | | | | | | |
   | ResNet101 | mAP=0.38 | @zenk | @baobao | | | | | |
-  | ResNet152 | Running 4images/s(4Up100) | | | | | | | |
+  | ResNet152 | 4xP100:7img/s Running | | | | | | | |
+  | ResNet200 | | | | | | | | |
+
+| ResNet152 | Running 4images/s(4Up100) | | | | | | | |
   | ResNet200 | | | | | | | |  |
   | ResNeXt50  | | | | | | | | |
   | ResNeXt101 | | | | | | | | |
