@@ -8,9 +8,6 @@
     * 后台运行 sshd 方便分布式集群（镜像包含一个共享的 sshkey 用于相互 ssh, 用于 **切勿用于其他场合**）。
 
 ```bash
-$ cd mxnet
-$ docker build -t ava-mxnet:cpu -f cpu.Dockerfile .
 $ docker build -t ava-mxnet:gpu -f gpu.Dockerfile .
-$ docker build -t ava-training-mxnet:cpu -f tcpu.Dockerfile .
-$ docker build -t ava-training-mxnet:gpu -f tgpu.Dockerfile .
+$ docker build -t ava-training-mxnet:gpu -f tgpu.Det.Dockerfile .
 ```
