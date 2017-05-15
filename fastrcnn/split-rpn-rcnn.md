@@ -80,7 +80,11 @@ nohup python -m rcnn.tools.proposal --network resnet                        \
                                   >${LOG} 2>&1 &
 ```
 
+proposal会在 `--root-path` 指定的目录下面生成一个文件包含proposal结果供rcnn使用，文件路径： `rpn_data/数据集_图片集合_rpn.pkl`
 
+数据集：参数 `--dataset` 指定的参数
+
+图片集合：参数 `--image_set` 指定的参数
 
 ## RCNN
 
