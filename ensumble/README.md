@@ -40,18 +40,10 @@
   | ResNeXt50 | | | | | | | | |
   | ResNeXt101 | | | | | | | | |
   | ResNeXt200 | | | | | | | | |
-  | Inception-V3 | MAP=0.5956| | | | | | | | 	|
+  | Inception-V3 | 4xP40:7img/s Running | | | | | | | | |
   | Inception-ResNet-V2 | | | | | | | | |
   | YOLO9000 | | | | | | | | |
 
-| ResNet152 | Running 4images/s(4Up100) | | | | | | | |
-  | ResNet200 | | | | | | | |  |
-  | ResNeXt50  | | | | | | | | |
-  | ResNeXt101 | | | | | | | | |
-  | ResNeXt200 | | | | | | | | |
-  | Inception-V3 | Running 7images/s(4Up40) | | | | | | | | 	 	 	 	 	 	 	 
-  | Inception-ResNet-V2	 | | | | | | | | |
-  | YOLO9000 | | | | | | | | | |
 
 ## Results on ImageNet Full
 训练Baseline，得到最终结果
