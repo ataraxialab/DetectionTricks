@@ -15,10 +15,10 @@
 ## Results on VOC07
 * 验证网络是否work，找GPUs的最佳实践
 
-  | 网络 | Original | FPN | RoIAlign | FPN + RoIAlign | Identity Mapping | Pretrain on LOC | RPN | RCNN | Constrained Pos/Neg |  
+  | 网络 | Original | FPN | RoIAlign | FPN + RoIAlign | Identity Mapping | Pretrain on LOC | RPN | RCNN | Constrained Pos/Neg |
   | ------| ------ | ------ | ------ | ------| ------ | ------ | ------ | ------ | ------ |
   | VGG19	| mAP=0.7019 | | | | | | | | 	 	 	 	 
-  | ResNet101 | mAP=0.7453 | | 2GPU(M40): 3.45samples/sec (running by byx) | | | | | | 2GPU(M40): 3.45samples/sec (running by byx) |
+  | ResNet101 | mAP=0.7453 | | 2GPU(M40): 3.45samples/sec, mAP=0.7507 | | | | | | 2GPU(M40): 3.45samples/sec, mAP=0.7417 |
   | ResNet152	| mAP=0.7522(mxnet), mAP=0.439(pytorch) | mAP=0.283(pytorch)| | | | | | | |
   | ResNet200	| mAP=0.75 | | | | | | |  | |
   | ResNeXt50  | | | | | | | | | |
@@ -33,16 +33,17 @@
 
   | 网络 | Original | FPN | RoIAlign | FPN + RoIAlign | Identity Mapping | Pretrain on LOC | RPN | RCNN |
   | ------| ------ | ------ | ------ | ------| ------ | ------ | ------ | ------ |
-  | VGG19	| mAP=0.7019 | | | | | | | | 	 	 	 	 
-  | ResNet101 | mAP=0.7453 | | 2GPU(M40): 3.26samples/sec (running by byx) | | | | | |
-  | ResNet152	| mAP=0.7522 | | | | | |  | |
-  | ResNet200	| mAP=0.75 | | | | | | |  |
-  | ResNeXt50  | | | | | | | | | 	 	 	 	 	 	 	 	 
-  | ResNeXt101 | | | | | | | | | 	 	 	 	 	 	 
-  | ResNeXt200 | | | | | | | | |	 	 	 	 	 	 
-  | Inception-V3 | | | | | | | | | 	 	 	 	 	 	 	 
-  | Inception-ResNet-V2	 | | | | | | | | |
-  | YOLO9000 | | | | | | | | | |
+  | VGG19 | | | | | | | | |
+  | ResNet101 | mAP=0.38 | @zenk | @baobao | | | | | |
+  | ResNet152 | 4xP100:7img/s Running | | | | | | | |
+  | ResNet200 | | | | | | | | |
+  | ResNeXt50 | | | | | | | | |
+  | ResNeXt101 | | | | | | | | |
+  | ResNeXt200 | | | | | | | | |
+  | Inception-V3 | 4xP40:7img/s Running | | | | | | | | |
+  | Inception-ResNet-V2 | | | | | | | | |
+  | YOLO9000 | | | | | | | | |
+
 
 ## Results on ImageNet Full
 训练Baseline，得到最终结果
@@ -50,8 +51,8 @@
   | 网络 | Original | FPN | RoIAlign | FPN + RoIAlign | Identity Mapping | Pretrain on LOC | RPN | RCNN |
   | ------| ------ | ------ | ------ | ------| ------ | ------ | ------ | ------ |
   | VGG19	| | | | | | | | | 	 	 	 	 
-  | ResNet101 | | | | | | | | |
-  | ResNet152	| | | | | | 1GPU(P40): 2.10samples/sec 2GPU(P40): 3.70samples/sec 4GPU(P40): 5.2samples/sec (running)|  | |
+  | ResNet101 | mAP=0.482 | | | | | | | |
+  | ResNet152 | @zzj | | | | | 1GPU(P40): 2.10samples/sec 2GPU(P40): 3.70samples/sec 4GPU(P40): 5.2samples/sec (running)|  | |
   | ResNet200	| | | | | | | |  |
   | ResNeXt50  | | | | | | | | | 	 	 	 	 	 	 	 	 
   | ResNeXt101 | | | | | | | | | 	 	 	 	 	 	 
