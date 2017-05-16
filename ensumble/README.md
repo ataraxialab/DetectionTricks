@@ -40,7 +40,7 @@
   | ResNeXt50 | | | | | | | | |
   | ResNeXt101 | | | | | | | | |
   | ResNeXt200 | | | | | | | | |
-  | Inception-V3 | 4xP40:7img/s Running | | | | | | | | |
+  | Inception-V3 | 4xP40:7img/s Running | | | | | | 4xP4:9.5img/s Running| | |
   | Inception-ResNet-V2 | | | | | | | | |
   | YOLO9000 | | | | | | | | |
 
