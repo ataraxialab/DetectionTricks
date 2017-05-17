@@ -18,7 +18,7 @@
   | 网络 | Original | FPN | RoIAlign | FPN + RoIAlign | Identity Mapping | Pretrain on LOC | RPN | RCNN | Constrained Pos/Neg | Multiscale Training | DataAugmentation |
   | ------| ------ | ------ | ------ | ------| ------ | ------ | ------ | ------ | ------ | ------ | ------ |
   | VGG19	| mAP=0.7019 | | | | | | | | 	 	 	 	 
-  | ResNet101 | mAP=0.7453 | | 2GPU(M40): 3.45samples/sec, mAP=0.7507 | | | | | | 2GPU(M40): 3.45samples/sec, mAP=0.7417 | 2GPU(M40): 3.45samples/sec (running) | 2GPU(P100): 4.5samples/sec (running) |
+  | ResNet101 | mAP=0.7453 | | 2GPU(M40): 3.45samples/sec, mAP=0.7507 | | | | | | 2GPU(M40): 3.45samples/sec, mAP=0.7417 | 2GPU(M40): 3.45samples/sec, mAP=0.7609 | 2GPU(P100): 4.5samples/sec, mAP=0.7400 |
   | ResNet152	| mAP=0.7522(mxnet), mAP=0.439(pytorch) | mAP=0.283(pytorch)| | | | | | | | | |
   | ResNet200	| mAP=0.75 | | | | | | |  | | | |
   | ResNeXt50  | | | | | | | | | | | |
