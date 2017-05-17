@@ -86,7 +86,6 @@ def img_transform(im, roidb):
 使用全部的90种predictions将会导致训练速度比10种predictions慢了1个数量级。因此使用简单的贪婪算法对这个数目进行减少。    
 算法开始于最好的prediction，在每一个step，再加另一个prediction，直至结果没有额外的提升。这个算法发现前10个predictions和90个的结果差不多，并且发现如果使用15个predictions，比90个predictions要稍微好一些。下图给出了当逐渐加入predictions时精度的变化曲线。这个贪婪算法容易实现，运行速度快，并且没有额外的参数。    
 ![dataaug_3](dataaug_3.png)  
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 
 ### 3. 文献【3】中的Data augmentation:
 对图像进行光照强度和颜色的转化：在imagenet training set的RGB pixels上进行PCA。然后对于每张训练图片加入找到的主成分，这样每张RGB图片的pixel就有了如下的变化： 
