@@ -13,12 +13,14 @@ config.SCALES = [(600, 1000)]  # 前一个为短边长度; 后一个为长边的
 ```
 config.SCALES = [(600, 1000), (800, 1333), (1000, 1666)]
 ```
-       
+
 这是因为mxnet rcnn中在get_image的时候会自动从config.SCALES中random一个scale出来，如下：
-reference: https://github.com/ataraxialab/mxnet/blob/master/example/rcnn/rcnn/io/image.py#L28-L31
-```
-scale_ind = random.randrange(len(config.SCALES))
-target_size = config.SCALES[scale_ind][0]
-max_size = config.SCALES[scale_ind][1]
-im, im_scale = resize(im, target_size, max_size, stride=config.IMAGE_STRIDE)
+reference: [https://github.com/ataraxialab/mxnet/blob/master/example/rcnn/rcnn/io/image.py#L28-L31](https://github.com/ataraxialab/mxnet/blob/master/example/rcnn/rcnn/io/image.py#L28-L31)
+
+```   
+scale_ind = random.randrange(len(config.SCALES))   
+target_size = config.SCALES[scale_ind][0]   
+max_size = config.SCALES[scale_ind][1]   
+im, im_scale = resize(im, target_size, max_size,\
+                      stride=config.IMAGE_STRIDE)  
 ```
