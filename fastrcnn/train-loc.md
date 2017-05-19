@@ -57,4 +57,4 @@ nohup python -m rcnn.tools.test_rpn --network resnet                        \
 
 ### 数据集
 
-数据集放在 `/disk2/data/imagenet_loc_2017` 上面，所以启动镜像的时候需要挂载相关的NFS。
+数据集放在目录 `/disk2/data/imagenet_loc_2017` 上面，所以启动镜像的时候需要挂载相关的NFS。
