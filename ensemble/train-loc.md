@@ -20,6 +20,7 @@ rm -rf ${LOG}
 export MXNET_CUDNN_AUTOTUNE_DEFAULT=0
 export PYTHONUNBUFFERED=1
 
+# 注意：--dataset_path 不需要改
 nohup python -m rcnn.tools.train_rpn --network resnet                       \
                                   --dataset imagenet_loc_2017               \
                                   --image_set train                         \
@@ -43,6 +44,7 @@ rm -rf ${LOG}
 export MXNET_CUDNN_AUTOTUNE_DEFAULT=0
 export PYTHONUNBUFFERED=1
 
+# 注意：--dataset_path 不需要改
 nohup python -m rcnn.tools.test_rpn --network resnet                        \
                                   --dataset imagenet_loc_val_2017           \
                                   --image_set val                           \
@@ -54,7 +56,55 @@ nohup python -m rcnn.tools.test_rpn --network resnet                        \
                                   >${LOG} 2>&1 &
 ```
 
+### ILSVRC2017数据集
 
-### 数据集
+#### KIRK源
 
 数据集放在目录 `/disk2/data/imagenet_loc_2017` 上面，所以启动镜像的时候需要挂载相关的NFS。
+
+#### 构造
+
+##### 清洗数据
+
+代码
+
+```python
+# repo: https://github.com/ataraxialab/mxnet
+# branch: master
+# file: example/rcnn/loc_train/clean.py
+```
+
+命令
+
+```shell
+# 生成测试数据集，生成的train.txt文件
+python mxnet/example/rcnn/loc_train/clean.py train /the/path/of/ILSVRC2017/ILSVRC
+
+# 生成验证数据集，生成的val.txt文件
+python mxnet/example/rcnn/loc_train/clean.py val /the/path/of/ILSVRC2017/ILSVRC
+```
+
+##### ILSVRC2017数据集
+
+1. 清洗数据
+
+2. 把清洗以后生成的 `train.txt` 重命名成 `train_loc.txt`
+
+3. 构造目录结构
+
+   ```shell
+   rootpath
+   |
+   +---ILSVRC
+   |      |
+   |      +--- Annotations
+   |      |
+   |      +--- Data
+   |      |
+   |      +--- ImageSets
+   |      |
+   |      +--- devkit
+   +--- train_loc.txt # 清洗以后生成的文件
+   |
+   +--- val.txt # 清洗以后生成的文件
+   ```
