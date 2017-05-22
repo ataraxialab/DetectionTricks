@@ -31,6 +31,7 @@
 * 由于设置在 `config.FIXED_PARAMS_SHARED` 中的layers包括了所有的RPN相关的前面的所有layers 所以利用简单合并的原则就可以最终的模型
 
 ### Inceptionv3 模型从新训练
+
 ####我们的想法：
 * 简单 `fine-tune` 检测用的 `inceptionv3` 模型效果不佳，需要重新训练，只用RPN训练会导致效果不佳，需要添加 `cls_label` 提升训练质量
 
