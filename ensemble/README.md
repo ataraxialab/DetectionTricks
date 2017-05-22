@@ -34,7 +34,7 @@
   | 网络 | Original | FPN | RoIAlign | FPN + RoIAlign | Identity Mapping | Pretrain on LOC | RPN | RCNN |
   | ------| ------ | ------ | ------ | ------| ------ | ------ | ------ | ------ |
   | VGG19 | | | | | | | | |
-  | ResNet101 | mAP=0.38 | @zenk | @baobao | | | | | |
+  | ResNet101 | mAP=0.38 | @zenk | mAP=0.345 | | | | | |
   | ResNet152 | 4xP100:7img/s 0.3711| | | | | | | |
   | ResNet200 | | | | | | | | |
   | ResNeXt50 | | | | | | | | |
