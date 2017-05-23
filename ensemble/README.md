@@ -31,18 +31,18 @@
 ## Results on ImageNet Sub
 * 验证ImageNet闭环
 
-  | 网络                  | Original             | FPN   | RoIAlign | FPN + RoIAlign | Identity Mapping | Pretrain on LOC | RPN  | RCNN |
-  | ------------------- | -------------------- | ----- | -------- | -------------- | ---------------- | --------------- | ---- | ---- |
-  | VGG19               |                      |       |          |                |                  |                 |      |      |
-  | ResNet101           | mAP=0.38             | @zenk | @baobao  |                |                  |                 |      |      |
-  | ResNet152           | 4xP100:7img/s 0.3711 |       |          |                |                  |                 |      |      |
-  | ResNet200           |                      |       |          |                |                  |                 |      |      |
-  | ResNeXt50           |                      |       |          |                |                  |                 |      |      |
-  | ResNeXt101          |                      |       |          |                |                  |                 |      |      |
-  | ResNeXt200          |                      |       |          |                |                  |                 |      |      |
-  | Inception-V3        | 4xP40:7img/s 0.2468  |       |          |                |                  |                 |      |      |
-  | Inception-ResNet-V2 |                      |       |          |                |                  |                 |      |      |
-  | YOLO9000            |                      |       |          |                |                  |                 |      |      |
+  | 网络 | Original | FPN | RoIAlign | FPN + RoIAlign | Identity Mapping | Pretrain on LOC | RPN | RCNN |
+  | ------| ------ | ------ | ------ | ------| ------ | ------ | ------ | ------ |
+  | VGG19 | | | | | | | | |
+  | ResNet101 | mAP=0.38 | @zenk | mAP=0.345 | | | | | |
+  | ResNet152 | 4xP100:7img/s 0.3711| | | | | | | |
+  | ResNet200 | | | | | | | | |
+  | ResNeXt50 | | | | | | | | |
+  | ResNeXt101 | | | | | | | | |
+  | ResNeXt200 | | | | | | | | |
+  | Inception-V3 | 4xP40:7img/s 0.2468 | | | | | 4xP4:9.5img/s Running|| | |
+  | Inception-ResNet-V2 | | | | | | | | |
+  | YOLO9000 | | | | | | | | |
 
 
 ## Results on ImageNet Full
