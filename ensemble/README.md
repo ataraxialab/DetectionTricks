@@ -15,18 +15,18 @@
 ## Results on VOC07
 * 验证网络是否work，找GPUs的最佳实践
 
-  | 网络 | Original | FPN | RoIAlign | FPN + RoIAlign | Identity Mapping | Pretrain on LOC | RPN | RCNN | Constrained Pos/Neg | Multiscale Training | DataAugmentation | GlobalContext |
-  | ------| ------ | ------ | ------ | ------| ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
-  | VGG19	| mAP=0.7019 | | | | | | | | |	 	 	 	 
-  | ResNet101 | mAP=0.7453 | | 2GPU(M40): 3.45samples/sec, mAP=0.7507 | | | | | | 2GPU(M40): 3.45samples/sec, mAP=0.7417 | 2GPU(M40): 3.45samples/sec, mAP=0.7609 | 2GPU(P100): 4.5samples/sec, mAP=0.7400 | mAP= 0.7559(sgd), mAP=0.1951(adam) |
-  | ResNet152	| mAP=0.7522(mxnet), mAP=0.439(pytorch) | mAP=0.283(pytorch)| | | | | | | | | | |
-  | ResNet200	| mAP=0.75 | | | | | | | | | | | |
-  | ResNeXt50  | | | | | | | | | | | | |
-  | ResNeXt101 | | | | | | | | | | | | |
-  | ResNeXt200 | | | | | | | | | | | | |
-  | Inception-V3 | MAP=0.5956| | | | | | | | 	| | | |
-  | Inception-ResNet-V2	 | | | | | | | | | |  | | | |
-  | YOLO9000 | | | | | | | | | | | | | |
+  | 网络 | Original | FPN | RoIAlign | FPN + RoIAlign | Identity Mapping | Pretrain on LOC | RPN | RCNN | Constrained Pos/Neg | Multiscale Training | DataAugmentation | GlobalContext | SampleBalanced |
+  | ------| ------ | ------ | ------ | ------| ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
+  | VGG19	| mAP=0.7019 | | | | | | | | | |
+  | ResNet101 | mAP=0.7453 | | 2GPU(M40): 3.45samples/sec, mAP=0.7507 | | | | | | 2GPU(M40): 3.45samples/sec, mAP=0.7417 | 2GPU(M40): 3.45samples/sec, mAP=0.7609 | 2GPU(P100): 4.5samples/sec, mAP=0.7400 | mAP= 0.7559(sgd), mAP=0.1951(adam) | 4epoch:mAP=0.7044 |
+  | ResNet152	| mAP=0.7522(mxnet), mAP=0.439(pytorch) | mAP=0.283(pytorch)| | | | | | | | | | | |
+  | ResNet200	| mAP=0.75 | | | | | | | | | | | | |
+  | ResNeXt50  | | | | | | | | | | | | | |
+  | ResNeXt101 | | | | | | | | | | | | | |
+  | ResNeXt200 | | | | | | | | | | | | | |
+  | Inception-V3 | MAP=0.5956| | | | | | | | | 	| | | |
+  | Inception-ResNet-V2	 | | | | | | | | | | |  | | | |
+  | YOLO9000 | | | | | | | | | | | | | | |
 
 ## Results on ImageNet Sub
 * 验证ImageNet闭环
