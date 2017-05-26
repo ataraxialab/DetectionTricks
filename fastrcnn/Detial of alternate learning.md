@@ -50,7 +50,7 @@
 5. End2End `finetune`
 6. 获得 `mAP`
  
-#### 详细实现
+#### MutilTask 详细实现
 `symbol` 流程图如下：
 1. metric 更新流程：
 	`rcnn.core.module.bind()` -> `mxnet.module.module.init()` -> `mxnet.module.excutor_group.update_metric()` -> `mx.metric.EvalMetric.update_dict()` -> `update()` 
