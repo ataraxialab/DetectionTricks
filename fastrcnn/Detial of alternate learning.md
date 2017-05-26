@@ -62,6 +62,7 @@
 	
 	添加一个新的dataloader：
 	`rcnn/core` 中的 dataloader 是继承自 `mx.io.DataIter` 的，需要修改里面的 `get_batch` 函数添加你要添加的新的label或者input ，再在 `self.label_name` 变量数组中添加该变量，注意这里用到的变量的名字应与symbol 中变量的名字保持一致。 此外在 `infer_shape` 中添加label的大小的信息
+	
 	[dataloader](https://github.com/likelyzhao/mxnet/blob/dev-faster-rcnn/example/rcnn/rcnn/core/loader.py#L397-L586)
 	
 	添加监控使用的`metric` : 在 `get_rpn_name`列表的 `pred` 和 `label` 中增加你添加的变量名并保持 `pred` 变量顺序与symbol文件中输出的`group`的顺序一致，`label` 变量顺序与新的dataloader中的`self.label_name` 中顺序保持一致，并添加loss 计算逻辑
