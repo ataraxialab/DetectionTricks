@@ -42,10 +42,10 @@
 #### 2. detection result statistics:
 1. constrained positive negative ratio:      
 
-mAP for all  | ![](resources/ap_all.png)|
-------------- |---------|
-mAP for log\_area  | ![](resources/map_log_area.png)|
-mAP for log\_aspect\_ratio | ![](resources/map_log_aspect_ratio.png)|
+mAP for all  | ![](resources/ap_all.png)||
+------------- |---------|----------|
+mAP for log\_area  | ![](resources/map_log_area.png)|![](resources/map_log_area_bin0.2.png)|
+mAP for log\_aspect\_ratio | ![](resources/map_log_aspect_ratio.png)| ![](resources/map_log_aspect_ratio_bin0.2.png)|
 
 AP in log\_area range [<13] |![](resources/ap_<13.png)|
 ----|-----|
