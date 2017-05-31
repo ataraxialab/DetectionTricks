@@ -42,23 +42,27 @@
 #### 2. detection result statistics:
 1. constrained positive negative ratio:      
 
-mAP for all  | ![](resources/ap_all.png)||
+tag| result | detailed result |
 ------------- |---------|----------|
+mAP for all  | ![](resources/ap_map = 0.7246_all.png)||
 mAP for log\_area  | ![](resources/map_log_area.png)|![](resources/map_log_area_bin0.2.png)|
 mAP for log\_aspect\_ratio | ![](resources/map_log_aspect_ratio.png)| ![](resources/map_log_aspect_ratio_bin0.2.png)|
 
-AP in log\_area range [<13] |![](resources/ap_<13.png)|
-----|-----|
-AP in log\_area range [13,15] |![](resources/ap_13~15.png)|
-AP in log\_area range [15,17] |![](resources/ap_15~17.png)|
-AP in log\_area range [17,19] |![](resources/ap_17~19.png)|
-AP in log\_area range [>19] |![](resources/ap_>19.png)|
+tag| result | detailed result |
+----|-----|------|
+AP in log\_area range [<13] |![](resources/ap_log_area_<13.png)| [detailed](resources/ap_log_area_<13/ap_log_area_<13.md)|
+AP in log\_area range [13,15] |![](resources/ap_log_area_13~15.png)| [detailed](resources/ap_log_area_<13~15/ap_log_area_13~15.md)|
+AP in log\_area range [15,17] |![](resources/ap_log_area_15~17.png)|[detailed](resources/ap_log_area_<15~17/ap_log_area_15~17.md)|
+AP in log\_area range [17,19] |![](resources/ap_log_area_17~19.png)|[detailed](resources/ap_log_area_<17~19/ap_log_area_17~19.md)|
+AP in log\_area range [>19] |![](resources/ap_log_area_>19.png)| [detailed](resources/ap_log_area_<13/ap_log_area_>18.8.md)|
 
-AP in log\_aspect_ratio range [<-2] |![](resources/ap_<-2.png)|
-----|-----|
-AP in log\_aspect_ratio range [-2,-1] |![](resources/ap_-2~-1.png)|
-AP in log\_aspect_ratio range [-1,0] |![](resources/ap_-1~0.png)|
-AP in log\_aspect_ratio range [0,1] |![](resources/ap_0~1.png)|
-AP in log\_aspect_ratio range [1,2] |![](resources/ap_1~2.png)|
-AP in log\_aspect_ratio range [>2] |![](resources/ap_>2.png)|
+tag| result | detailed result |
+----|-----|-----|
+AP in log\_aspect_ratio range [<-3] |![](resources/ap_log_aspect_ratio_<-3.png)| [detailed](resources/ap_log_aspect_ratio_<-3/ap_log_aspect_ratio_<-3.md)|
+AP in log\_aspect_ratio range [-3,-1.5] |![](resources/ap_log_aspect_ratio_-3~-1.5.png)|[detailed](resources/ap_log_aspect_ratio_-3~-1.6/ap_log_aspect_ratio_-3~-1.6.md)|
+AP in log\_aspect_ratio range [-1.5,-0.5] |![](resources/ap_log_aspect_ratio_-1.5~-0.5.png)| [detailed](resources/ap_log_aspect_ratio_-1.6~-0.6/ap_log_aspect_ratio_-1.6~-0.6.md)|
+AP in log\_aspect_ratio range [-0.5,0.5] |![](resources/ap_log_aspect_ratio_-0.5~0.5.png)|[detailed](resources/ap_log_aspect_ratio_-1.6~-0.6/ap_log_aspect_ratio_-0.6~0.6.md)|
+AP in log\_aspect_ratio range [0.5,1.5] |![](resources/ap_log_aspect_ratio_0.5~1.5.png)|[detailed](resources/ap_log_aspect_ratio_0.6~1.4/ap_log_aspect_ratio_0.6~1.4.md)|
+AP in log\_aspect_ratio range [1.5,3] |![](resources/ap_log_aspect_ratio_1.5~3.png)|[detailed](resources/ap_log_aspect_ratio_1.4~3/ap_log_aspect_ratio_1.4~3.md)|
+AP in log\_aspect_ratio range [>3] |![](resources/ap_log_aspect_ratio_>3.png)| [detailed](resources/ap_log_aspect_ratio_>3/ap_log_aspect_ratio_>2.8.md)|
 
