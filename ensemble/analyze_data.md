@@ -27,8 +27,10 @@
 ![](resources/flowchart_analyze_data.png)
 
 - **绿色分支为新增的detailed的分析过程，主要实现在不同scale/aspect ratio下计算mAP，以及各个cls的AP，AR。**     
-	1. do\_python\_eval\_detailed：定义好不同的scale／aspect ratio区间，在每个区间内按cls输入到voc\_eval中。  
-	2. voc\_eval\_detailed：筛选groundtruth boxes和detection results，使其满足scale／aspect ratio属于指定的区间。对于满足要求的数据，计算每个类别的recall, precision, ap, ar。   
+	1. do\_python\_eval\_detailed：定义好不同的scale／aspect ratio区间，在每个区间内按cls输入到voc\_eval\_detailed中。  
+	2. voc\_eval\_detailed：筛选groundtruth boxes和detection results，使其满足scale／aspect ratio属于指定的区间。对于满足要求的数据，计算每个类别的recall, precision, ap, ar。 
+	这部分详细的流程为：    
+	![](resources/eval_detailed_structure.png)  
 	3. draw\_map / draw\_ap: 绘制不同cls，不同scale/aspect ratio下的mAP／AP的柱状图。
 
 ### 输出结果
