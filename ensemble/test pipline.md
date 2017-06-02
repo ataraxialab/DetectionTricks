@@ -4,7 +4,7 @@
 需要开发的算法模块包括：
 1. rpneval
 2. 读取rois pkl 计算recalls(未完成)
-3. rcnn eval(未完成)
+3. rcnn eval
 4. post processing(未完成)
 
 ### rpneval 
@@ -111,7 +111,7 @@ nohup python -m rcnn.tools.test_rcnn --network resnet                        \
                                   >${LOG} 2>&1 &
 ```
 
-log中可以查看mAP等情况，同时会保存最终的检测结果的一个pkl文件.文件路径： rcnn_data/imagenet(dataset)_val(image_set)_rcnn.pkl
+log中可以查看mAP等情况，同时会保存最终的检测结果的一个pkl文件.文件路径： cache/imagenet(dataset)_val(image_set)_detections.pkl
 
 ### post processing(未完成)
 另外写一个后处理的工具，读取一个或者多个检测结果的pkl文件，做融合或者boxvoting。输入参数为：
