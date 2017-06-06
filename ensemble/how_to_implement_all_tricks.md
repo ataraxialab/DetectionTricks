@@ -4,7 +4,7 @@
 改为： 
        
 ```
-$ git clone --recursive https://github.com/ElaineBao/mxnet.git      
+$ git clone --recursive https://github.com/elainebao/mxnet.git     
 $ cd mxnet/example/rcnn     
 $ bash script/additional_deps.sh      
 ``` 
@@ -25,7 +25,8 @@ $ python
 若出现`<function ROIAlign at xxxx>`注册成功则说明安装成功，否则查看上述步骤是否确已完成。 
 
 ## Data Prepare
-1.下载imagenet_loc_2017数据集，构造其目录结构为：
+### Data Prepare for imagenet\_CLS\_LOC_2017 dataset 
+1.下载imagenet\_cls\_loc_2017数据集，构造其目录结构为：
 
 ```
 imagenet_loc_rootpath
@@ -45,10 +46,7 @@ imagenet_loc_rootpath
 
 ```
 # 生成训练数据集，生成的train.txt文件
-python mxnet/example/rcnn/loc_train/clean.py train /the/path/to/ILSVRC2017/ILSVRC
-
-# 生成验证数据集，生成的val.txt文件
-python mxnet/example/rcnn/loc_train/clean.py val /the/path/to/ILSVRC2017/ILSVRC
+python mxnet/example/rcnn/data_clean.py train /the/path/to/ILSVRC2017/ILSVRC CLS_LOC
 ```
 把清洗以后生成的`train.txt`重命名成`train_loc.txt`.  
 
@@ -68,7 +66,7 @@ imagenet_loc_rootpath
 |      +--- devkit
 +--- train_loc.txt # 清洗以后生成的文件
 |
-+--- val.txt # 清洗以后生成的文件
++--- val.txt # 原验证集list
 ```
 
 4.将数据链接到mxnet中，便于使用。 
@@ -78,6 +76,61 @@ $ cd mxnet
 $ cd example/rcnn
 $ mkdir data
 $ ln -s imagenet_loc_rootpath data/
+```
+
+### Data Prepare for imagenet\_DET_2017 dataset 
+1.下载imagenet\_DET_2017数据集，构造其目录结构如下:
+
+```
+imagenet_DET_rootpath
+|
++---ILSVRC
+|      |
+|      +--- Annotations
+|      |
+|      +--- Data
+|      |
+|      +--- ImageSets
+|      |
+|      +--- devkit
+```
+
+2.清洗数据：   
+
+```
+# 生成训练数据集，生成的train.txt文件
+python mxnet/example/rcnn/data_clean.py train /the/path/to/ILSVRC2017/ILSVRC DET
+```
+ 
+
+3.完成data prepare后的目录结构如下，和CLS_LOC略有不同：  
+
+```
+imagenet_DET_rootpath
+|
++---ILSVRC
+|      |
+|      +--- Annotations
+|      |
+|      +--- Data
+|      |
+|      +--- ImageSets
+|      |		 |	
+|      |		 +--- train.txt  # 清洗以后生成的文件
+|      |		 |	
+|      |		 +--- val.txt    # 原验证集list
+|      |
+|      +--- devkit
+```
+
+4.将数据链接到mxnet中，和CLS_LOC略有不同。 
+
+```
+$ cd mxnet
+$ cd example/rcnn
+$ mkdir data
+$ mkdir data/imagenet
+$ ln -s imagenet_rootpath/ILSVRC data/imagenet/DET
 ```
 
 ## Model Prepare
@@ -97,10 +150,10 @@ $ cd example/rcnn
 $ bash script/resnet_imagenet_loc.sh 0,1  # 0,1表示gpu id
 ```
 关于tricks:  
-1. global context: 可以直接在`script/resnet_imagenet_loc.sh`添加`--use_global_context`.  
-2. data augmentation: 可以直接在`script/resnet_imagenet_loc.sh`添加`--use_data_augmentation`.  
-3. roi align: 可以直接在`script/resnet_imagenet_loc.sh`添加`--use_roi_align`.  
-4. multiscale training: 在rcnn/config.py中将  
+1. **global context:** 可以直接在`script/resnet_imagenet_loc.sh`添加`--use_global_context`. 目前global context仅支持resnet系列模型。   
+2. **data augmentation:** 可以直接在`script/resnet_imagenet_loc.sh`添加`--use_data_augmentation`.  
+3. **roi align:** 可以直接在`script/resnet_imagenet_loc.sh`添加`--use_roi_align`.  
+4. **multiscale training:** 在rcnn/config.py中将  
 
 ```
 config.SCALES = [(600, 1000)]
@@ -111,7 +164,7 @@ config.SCALES = [(600, 1000)]
 config.SCALES = [(600, 1000), (800,1333), (1000,1667)]
 ```
 
-5.constrained positive/negative ratio:在rcnn/config.py中将    
+5.**constrained positive/negative ratio:** 在rcnn/config.py中将    
 
 ```
 # rpn anchors batch size
