@@ -3,12 +3,15 @@
 ![testpipline](test-pipline.png)
 需要开发的算法模块包括：
 1. rpneval
-2. 读取rois pkl 计算recalls(未完成)
+2. 读取rois pkl 计算recalls
 3. rcnn eval
-4. post processing(未完成)
+4. post processing
 
 ### rpneval 
-使用mxnet rcnn 框架中 testrpn代码，输入的参数为
+
+[评估 rpn 模型工具 rcnn/tools/test_rpn.py](https://github.com/ataraxialab/mxnet/blob/master/example/rcnn/rcnn/tools/test_rpn.py)
+
+输入的参数为:
 
 |参数|含义|
 |----|----|
@@ -45,7 +48,10 @@ nohup python -m rcnn.tools.test_rpn --network resnet                        \
 log中可以查看average recall等情况，同时会保存一个pkl文件，文件路径： rpn_data/imagenet(dataset)_val(image_set)_rpn.pkl
 
 ### 读取rois pkl 计算recalls
-另外写一个工具 输入参数定义如下
+
+[评估rois 工具 rcnn/tools/test_rois.py](https://github.com/likelyzhao/mxnet/blob/dev-faster-rcnn/example/rcnn/rcnn/tools/test_rois.py)
+
+输入参数为：
 
 |参数|含义|
 |----|----|
@@ -76,7 +82,9 @@ nohup python -m rcnn.tools.test_rois --pklfile rrpn_data/deepmask_pkl           
 
 ### rcnn eval
 
-使用mxnet rcnn框架中的testrcnn代码，输入参数为：
+[评估rcnn模型工具 rcnn/tools/test_rcnn.py](https://github.com/ataraxialab/mxnet/blob/master/example/rcnn/rcnn/tools/test_rcnn.py)
+
+输入参数为：
 
 |参数|含义|
 |----|----|
@@ -114,7 +122,10 @@ nohup python -m rcnn.tools.test_rcnn --network resnet                        \
 log中可以查看mAP等情况，同时会保存最终的检测结果的一个pkl文件.文件路径： cache/imagenet(dataset)_val(image_set)_detections.pkl
 
 ### post processing(未完成)
-另外写一个后处理的工具，读取一个或者多个检测结果的pkl文件，做融合或者boxvoting。输入参数为：
+
+[后处理工具 rcnn/tools/post_processing.py](https://github.com/ataraxialab/mxnet/blob/master/example/rcnn/rcnn/tools/post_processing.py)
+
+输入参数为：
 
 |参数|含义|
 |----|----|
@@ -156,9 +167,9 @@ log中可以查看mAP等情况，同时会保存最终的检测结果的一个pk
 
 第一级的长度为测试的图片数目
 
-每一张图片对应一个list，该list中每一个元素是一个numpy.ndarray 大小为1X5 分别是【x1,y1,x2,y2，score】(x1,y1)为左上角的点的x,y 坐标，(x2,y2)为右下角的点x,y 坐标，score为rpn 的置信度.该list的个数为rois的个数
+每一张图片对应一个list，该list中每一个元素是一个numpy.ndarray 大小为1X5 分别是[x1,y1,x2,y2，score].(x1,y1)为左上角的点的x,y 坐标，(x2,y2)为右下角的点x,y 坐标，score为rpn 的置信度.该list的个数为rois的个数
 
 #### rcnn检测结果的pkl文件格式：
 结果为一个 num_cls X num_images 的矩阵，分别对应分类的类别个数和测试图片的张数
 
-矩阵的每一个结果是一个numpy.ndarray 大小为NX5 N 表示有多少个检测出来的物体框，每一个框的记录是【x1,y1,x2,y2，score】(x1,y1)为左上角的点的x,y 坐标，(x2,y2)为右下角的点x,y 坐标，score表示置信度
+矩阵的每一个结果是一个numpy.ndarray 大小为NX5 N 表示有多少个检测出来的物体框，每一个框的记录是[x1,y1,x2,y2，score] (x1,y1)为左上角的点的x,y 坐标，(x2,y2)为右下角的点x,y 坐标，score表示置信度
