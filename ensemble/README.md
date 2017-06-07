@@ -48,10 +48,10 @@
 ## Results on ImageNet Full
 训练Baseline，得到最终结果
 
-| 网络                  | Original  | FPN  | RoIAlign | FPN + RoIAlign | Identity Mapping | Pretrain on LOC                          | RPN  | RCNN |
-| ------------------- | --------- | ---- | -------- | -------------- | ---------------- | ---------------------------------------- | ---- | ---- |
+| 网络                  | Original  | FPN  | RoIAlign | FPN + RoIAlign | Identity Mapping | Pretrain on LOC                          | RPN  | RCNN | Multiscale |
+| ------------------- | ---------- | ---- | -------- | -------------- | ---------------- | ---------------------------------------- | ---- | ---- |------------|
 | VGG19               |           |      |          |                |                  |                                          |      |      |
-| ResNet101           | mAP=0.482 |      |          |                |                  | 4xP4:9.5img/s Running                    |      |      |
+| ResNet101           | mAP=0.482(train/test scale 600), mAP=0.4898(train scale 600/test scale 800), mAP=0.4532(train scale 600/test scale 1000) mAP=0.4456(train scale 600/test scale 400) |      |          |                |                  | 4xP4:9.5img/s Running                    |      |      | mAP=0.4973(test scale 600+800, nms+box voting), mAP=0.5005(test scale 600+800+1000, nms+box voting), mAP=0.5040(test scale 400+600+800+1000, nms+box voting)|
 | ResNet152           | @zzj      |      |          |                |                  | 1GPU(P40): 2.10samples/sec 2GPU(P40): 3.70samples/sec 4GPU(P40): 5.2samples/sec (running) |      |      |
 | ResNet200           |           |      |          |                |                  |                                          |      |      |
 | ResNeXt50           |           |      |          |                |                  |                                          |      |      |

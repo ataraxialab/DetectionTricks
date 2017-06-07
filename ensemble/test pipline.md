@@ -122,7 +122,8 @@ log中可以查看mAP等情况，同时会保存最终的检测结果的一个pk
 |--pklfileOut|输出的pkl文件名|
 |--dataset|测试的样本类型voc,coco或者imagenet 一般为imagenet|
 |--image_set|表示测试集train val 或者test，一般为val|
-
+|--use_nms|表示测试时使用nms进行模型结果的融合|
+|--use\_box\_voting|表示测试时使用box voting进行模型结果的融合。box voting和nms同时使用时，先使用nms，后使用box voting。 |
 调用例子：
 
 ```
@@ -140,6 +141,8 @@ nohup python -m rcnn.tools.post_processing --pklfileIn rcnn_data/rcnn_v1_pkl,rcn
                                   --pklfileOut rcnn_data/rcnn_merge.pkl           \
                                   --dataset imagenet           \
                                   --image_set val                           \
+                                  --use_nms                           \
+                                  --use_box_voting                          \
                                   >${LOG} 2>&1 &
 ```
 
