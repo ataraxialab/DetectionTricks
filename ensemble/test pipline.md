@@ -121,7 +121,7 @@ nohup python -m rcnn.tools.test_rcnn --network resnet                        \
 
 log中可以查看mAP等情况，同时会保存最终的检测结果的一个pkl文件.文件路径： cache/imagenet(dataset)_val(image_set)_detections.pkl
 
-### post processing(未完成)
+### post processing
 
 [后处理工具 rcnn/tools/post_processing.py](https://github.com/ataraxialab/mxnet/blob/master/example/rcnn/rcnn/tools/post_processing.py)
 
