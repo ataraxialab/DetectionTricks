@@ -60,7 +60,13 @@
 | Inception-V3        |           |      |          |                |                  |                                          |      |      |
 | Inception-ResNet-V2 |           |      |          |                |                  |                                          |      |      |
 | YOLO9000            |           |      |          |                |                  |                                          |      |      |
+| deepmask           |     mAP=0.4180      |      |          |                |                  |                                          |      |      |
 
+ensemble
+
+| 网络 | 参数 | mAP |
+|-----|------|-----|
+| resnet101(图片短边大小为400, 600, 800, 1000)+deepmask | NMS=0.5 BOX_VOTING_IOU_THRESH=0.5 BOX_VOTING_SCORE_THRESH=0.1| mAP=0.5090 |
 
 * ResNet-V2来源：
   https://github.com/tornadomeet/ResNet
