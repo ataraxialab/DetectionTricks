@@ -1,15 +1,21 @@
 ## Install MXNET
 1.按照官网指示安装mxnet依赖：[Installing MXNet](http://mxnet.io/get_started/install.html). (选择**Linux-Python-GPU-Build from source**.)  
-其中，将`Build the MXNet core shared library`中的`Step 4 Download MXNet sources and build MXNet core shared library.`   
-改为： 
-       
+
+2.替换example/rcnn。   
+（1）下载ataraxialab/rcnn:
+
 ```
-$ git clone --recursive https://github.com/elainebao/mxnet.git     
+$ git clone https://github.com/ataraxialab/RCNN.git  
+```
+（2）将官方mxnet中的example/rcnn替换成ataraxialab/rcnn      
+（3）编译
+
+``` 
 $ cd mxnet/example/rcnn     
 $ bash script/additional_deps.sh      
 ``` 
 
-2.验证安装是否成功：
+3.验证安装是否成功：
 打开python terminal。  
 
 ``` 
