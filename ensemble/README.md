@@ -60,6 +60,9 @@
 | Inception-V3        |           |      |          |                |                  |                                          |      |      |
 | Inception-ResNet-V2 |           |      |          |                |                  |                                          |      |      |
 | YOLO9000            |           |      |          |                |                  |                                          |      |      |
+| deepmask           |     mAP=0.4180      |      |          |                |                  |                                          |      |      |
+
+ensemble
 
 | 网络 | 参数 | mAP |
 |-----|------|-----|
