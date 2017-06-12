@@ -1,17 +1,16 @@
 ## Install MXNET
 1.按照官网指示安装mxnet依赖：[Installing MXNet](http://mxnet.io/get_started/install.html). (选择**Linux-Python-GPU-Build from source**.)  
 
-2.替换example/rcnn。   
-（1）下载ataraxialab/rcnn:
+2.下载ataraxialab/RCNN:
 
 ```
+$ cd MXNET_ROOT/example
 $ git clone https://github.com/ataraxialab/RCNN.git  
 ```
-（2）将官方mxnet中的example/rcnn替换成ataraxialab/rcnn      
-（3）编译
+然后编译：
 
 ``` 
-$ cd mxnet/example/rcnn     
+$ cd MXNET_ROOT/example/RCNN     
 $ bash script/additional_deps.sh      
 ``` 
 
@@ -29,6 +28,8 @@ $ python
 ```
 
 若出现`<function ROIAlign at xxxx>`注册成功则说明安装成功，否则查看上述步骤是否确已完成。 
+
+注意：以后都使用MXNET_ROOT/example/RCNN文件夹，我们的代码都在这里；不是MXNET_ROOT/example/rcnn文件夹，这是mxnet官方的rcnn实现。
 
 ## Data Prepare
 ### Data Prepare for imagenet\_CLS\_LOC_2017 dataset 
