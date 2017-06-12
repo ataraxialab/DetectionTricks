@@ -167,7 +167,7 @@ log中可以查看mAP等情况，同时会保存最终的检测结果的一个pk
 
 第一级的长度为测试的图片数目
 
-每一张图片对应一个list，该list中每一个元素是一个numpy.ndarray 大小为1X5 分别是[x1,y1,x2,y2，score].(x1,y1)为左上角的点的x,y 坐标，(x2,y2)为右下角的点x,y 坐标，score为rpn 的置信度.该list的个数为rois的个数
+每一张图片对应一个list，该list中每一个元素是一个numpy.ndarray 大小为 NX5 分别是[x1,y1,x2,y2，score].(x1,y1)为左上角的点的x,y 坐标，(x2,y2)为右下角的点x,y 坐标，score为rpn 的置信度.N为rois的个数
 
 #### rcnn检测结果的pkl文件格式：
 结果为一个 num_cls X num_images 的矩阵，分别对应分类的类别个数和测试图片的张数
