@@ -11,7 +11,7 @@
 |边缘物体|79/1000|![](resouce/Edge.png)|
 |极小物体|225/1000|![](resouce/Tiny.png)|
 |比例失调|44/1000|![](resouce/aspect.PNG)|
-|物体重叠|225/1000|![](resouce/overlap.PNG)|
+|物体重叠|25/1000|![](resouce/overlap.PNG)|
 |严重形变|5/1000|![](resouce/deformable.PNG)|
 
 大家有新的类型可以添加到表格中
