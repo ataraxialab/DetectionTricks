@@ -94,7 +94,7 @@ DMLC_REGISTRY_ENABLE(nnvm::Op);
 
 ```cpp
 // file nnvm/include/nnvm/op.h:L369
-#define NNVM_REGISTER_OP(OpName)                                       \
+#define NNVM_REGISTER_OP(OpName)                                        \
   DMLC_STR_CONCAT(NNVM_REGISTER_VAR_DEF(OpName), __COUNTER__) =         \
       ::dmlc::Registry<::nnvm::Op>::Get()->__REGISTER_OR_GET__(#OpName)
 ```
@@ -107,19 +107,33 @@ nnvm/src/op.cc
 
 ### ndarray函数
 
-legacy
+##### legacy版本
 
 ```cpp
-#define MXNET_REGISTER_NDARRAY_FUN(name)                                 \
+#define NVM_REGISTER_OP(name)                                 \
   DMLC_REGISTRY_REGISTER(::mxnet::NDArrayFunctionReg, NDArrayFunctionReg, name)
 ```
 
-new?
+##### 新版本
+
+通过宏`NNVM_REGISTER_OP`定义。
 
 ### symbol(operator)函数
 
-legacy
+##### legacy版本
 
-new?
+主要三个接口来实现，分别是：`OperatorProperty`,`Operator`,`Parameter`，在`MXListAllOpName`函数中把`OperatorProperty`转换成`Op`。
 
-#### 代码流程
+`OperatorProperty`：封装operator的参数返回值等等有关Operator的信息，提供创建Operator接口。
+
+`Operator`：封装了两个核心函数`Forward`/`Backword`。
+
+`Parameter`：封装参数，一个结构体包含某个操作所需要的所有参数，通过记录字段的偏移量来访问字段，目的是可以通过字段的名字来访问字段。
+
+新版本
+
+暂时没有实现的代码。
+
+### 代码流程
+
+*TODO*
