@@ -1,3 +1,30 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [python调用cpp分析](#python%E8%B0%83%E7%94%A8cpp%E5%88%86%E6%9E%90)
+  - [导入](#%E5%AF%BC%E5%85%A5)
+    - [模块cython](#%E6%A8%A1%E5%9D%97cython)
+    - [模块ctypes](#%E6%A8%A1%E5%9D%97ctypes)
+  - [代码分析](#%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90)
+    - [类Registry](#%E7%B1%BBregistry)
+        - [定义全局实例仓储](#%E5%AE%9A%E4%B9%89%E5%85%A8%E5%B1%80%E5%AE%9E%E4%BE%8B%E4%BB%93%E5%82%A8)
+        - [添加实例](#%E6%B7%BB%E5%8A%A0%E5%AE%9E%E4%BE%8B)
+        - [核心源代码](#%E6%A0%B8%E5%BF%83%E6%BA%90%E4%BB%A3%E7%A0%81)
+      - [类Op](#%E7%B1%BBop)
+        - [定义全局函数仓储](#%E5%AE%9A%E4%B9%89%E5%85%A8%E5%B1%80%E5%87%BD%E6%95%B0%E4%BB%93%E5%82%A8)
+        - [定义函数](#%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0)
+        - [核心源代码](#%E6%A0%B8%E5%BF%83%E6%BA%90%E4%BB%A3%E7%A0%81-1)
+    - [ndarray函数](#ndarray%E5%87%BD%E6%95%B0)
+        - [legacy版本](#legacy%E7%89%88%E6%9C%AC)
+        - [新版本](#%E6%96%B0%E7%89%88%E6%9C%AC)
+    - [symbol(operator)函数](#symboloperator%E5%87%BD%E6%95%B0)
+        - [legacy版本](#legacy%E7%89%88%E6%9C%AC-1)
+        - [新版本](#%E6%96%B0%E7%89%88%E6%9C%AC-1)
+    - [代码流程](#%E4%BB%A3%E7%A0%81%E6%B5%81%E7%A8%8B)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # python调用cpp分析
 
 ## 导入
