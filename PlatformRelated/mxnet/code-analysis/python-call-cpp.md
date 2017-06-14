@@ -4,7 +4,7 @@
 
 把C&CPP函数导入python。这个地方主要用到了两个模块**cython**和**ctypes**。
 
-### 模块ctypes
+### 模块cython
 
 cython 在python sdk中是一个可选项，主要提供初始化*ndarray*,*_ndarray_internal*,*_symbol_internal*和*symbol*模块接口，导出CPP中的*ndaray*和*operator*函数到python的相应模块。
 
@@ -22,11 +22,11 @@ def _init_symbol_module(symbol_class, root_namespace):
 
 cython代码编译完成以后会根据python的版本分别生成两个模块*_c2*和*_c3*供使用。
 
-通过环境变量`MXNET_ENABLE_CYTHON`控制 源代码`mxnet/symbol.py`和`mxnet/ndarray.py`是否使用cython。
+通过环境变量`MXNET_ENABLE_CYTHON`控制源代码`mxnet/symbol.py`和`mxnet/ndarray.py`是否使用cython导出C&CPP代码。
 
 ### 模块ctypes
 
-ctypes的工作就是把mxnet编译好的动态链接库导出到python，来达到python调用C&CPP的目的。cython暴露出来的接口，都可以通过ctypes的导出。
+ctypes的工作就是把mxnet编译好的动态链接库导出到python，来达到python调用C&CPP的目的。通过cython暴露出来的接口，都可以通过ctypes的导出。
 
 导出代码：
 
@@ -44,7 +44,7 @@ mxnet的C&CPP中定义了一系列的关于ndarray和operator的函数，通过�
 
 ### 类Registry
 
-类Registry的功能是定义全局唯一数据实例仓储。一个模板类，模板参数为全局实例的类型，内部维护了每个全局实例的名称到全局实例的映射关系。
+类Registry的功能是定义全局唯一数据实例仓储。它一个模板类，模板参数为全局实例的类型，内部维护了每个全局实例的名称到全局实例的映射关系。
 
 ##### 定义全局实例仓储
 
@@ -78,9 +78,9 @@ nnvm/dmlc-core/include/dmlc/registry.h
 
 #### 类Op
 
-类Op的功能是抽象mxnet中函数(操作，例如加减乘除、卷积等等)。在mxnet中如果你要暴露一个函数，必须通过Op来定义输入，输出的个数以及类型。另外，Op还涉及到其他计算相关的信息。
+类`Op`的功能是抽象mxnet中函数(操作，例如加减乘除、卷积等等)。在mxnet中如果你要暴露一个函数，必须通过`Op`来定义输入，输出的个数以及类型。另外，`Op`还涉及到其他计算相关的信息。
 
-所有的Op实例都维护在一个全局的Registry当中。
+所有的`Op`实例都维护在一个全局的Registry当中。
 
 ##### 定义全局函数仓储
 
@@ -124,13 +124,13 @@ nnvm/src/op.cc
 
 主要三个接口来实现，分别是：`OperatorProperty`,`Operator`,`Parameter`，在`MXListAllOpName`函数中把`OperatorProperty`转换成`Op`。
 
-`OperatorProperty`：封装operator的参数返回值等等有关Operator的信息，提供创建Operator接口。
+`OperatorProperty`：封装operator的参数返回值等等有关`Operator`的信息，提供创建`Operator`接口。
 
 `Operator`：封装了两个核心函数`Forward`/`Backword`。
 
-`Parameter`：封装参数，一个结构体包含某个操作所需要的所有参数，通过记录字段的偏移量来访问字段，目的是可以通过字段的名字来访问字段。
+`Parameter`：封装参数，是一个结构体包含某个操作所需要的所有参数，通过记录字段的偏移量来访问字段，目的是可以通过字段的名字来访问字段。
 
-新版本
+##### 新版本
 
 暂时没有实现的代码。
 
