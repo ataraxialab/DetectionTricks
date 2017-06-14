@@ -20,13 +20,13 @@ def _init_symbol_module(symbol_class, root_namespace):
 	'''导出C&CPP中的ndarray的operator到python的ndarray模块'''
 ```
 
-cython代码编译完成以后会根据python的版本分别生成两个模块*_c2*和*_c3*供使用。
+cython代码编译完成以后会根据python的版本分别生成两个模块 *_c2* 和 *_c3* 供使用，*_c2* 对应python2，*_c3 * 对应python3。
 
 通过环境变量`MXNET_ENABLE_CYTHON`控制源代码`mxnet/symbol.py`和`mxnet/ndarray.py`是否使用cython导出C&CPP代码。
 
 ### 模块ctypes
 
-ctypes的工作就是把mxnet编译好的动态链接库导出到python，来达到python调用C&CPP的目的。通过cython暴露出来的接口，都可以通过ctypes的导出。
+ctypes的工作就是把mxnet编译好的动态链接库导出到python，来达到python调用C&CPP的目的。通过cython导出来的接口，都可以通过ctypes的导出。
 
 导出代码：
 
@@ -36,7 +36,7 @@ ctypes的工作就是把mxnet编译好的动态链接库导出到python，来达
 _LIB = _load_lib()
 ```
 
-有了**_LIB**就可以调用任何C&CPP暴露出来的函数。函数列表：mxnet/include/c_api.h
+有了**_LIB**就可以调用任何C&CPP暴露出来的函数。函数列表：include/mxnet/c_api.h
 
 ## 代码分析
 
@@ -58,7 +58,7 @@ mxnet的C&CPP中定义了一系列的关于ndarray和operator的函数，通过�
   }                                                                     \
 ```
 
-以上代码通过显示实例化模板的方式定义了全局变量。
+以上代码通过显式实例化模板的方式定义了全局变量。
 
 ##### 添加实例
 
@@ -126,7 +126,7 @@ nnvm/src/op.cc
 
 `OperatorProperty`：封装operator的参数返回值等等有关`Operator`的信息，提供创建`Operator`接口。
 
-`Operator`：封装了两个核心函数`Forward`/`Backword`。
+`Operator`：封装了两个核心函数`Forward`/`Backward`。
 
 `Parameter`：封装参数，是一个结构体包含某个操作所需要的所有参数，通过记录字段的偏移量来访问字段，目的是可以通过字段的名字来访问字段。
 
