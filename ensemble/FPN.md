@@ -23,15 +23,15 @@ FPN主要实现了特征金字塔模型，利用深度网络多个stage的featur
 
 
 ## 简化版FPN
-根据上面的分析，FPN需要实现gt roi到哪一层的筛选。我们将这一步忽略，直接在金字塔不同尺度的feature map上分别进行RPN和Fast RCNN，这样就省却了对generate_anchors.py / anchor_target_layer.py / proposal_target_layer.py / roi_pool.py等层的改写。
+根据上面的分析，FPN需要实现gt roi到哪一层的筛选。我们将这一步忽略，直接在金字塔不同尺度的feature map上分别进行RPN和Fast RCNN，这样就省却了对generate\_anchors.py / anchor\_target\_layer.py / proposal\_target\_layer.py / roi\_pool.py等层的改写。
 
 
 ## 实现
-整个repo位于：https://github.com/ataraxialab/faster_rcnn_pytorch
+整个repo位于：https://github.com/ataraxialab/faster\_rcnn\_pytorch
 其中后缀名有FPN的说明进行了FPN相应的修改。
 
 ### 1 resnnet.py
-https://github.com/ataraxialab/faster_rcnn_pytorch/blob/master/faster_rcnn/resnet_FPN.py
+https://github.com/ataraxialab/faster\_rcnn\_pytorch/blob/master/faster\_rcnn/resnet\_FPN.py
 
 改写输出为FPN的形式，即将C2，C3，C4，C5的feature map都输出
 在resnet类的forward函数中，加入如下代码:
@@ -43,7 +43,11 @@ https://github.com/ataraxialab/faster_rcnn_pytorch/blob/dev/faster_rcnn/resnet_F
 https://github.com/ataraxialab/faster_rcnn_pytorch/blob/dev/faster_rcnn/faster_rcnn_resnet152_imgsize600_FPN.py#L178-L194
 
 * 在faster rcnn的forward函数中加入构建金字塔feature map的部分，具体地就是通过C2,C3,C4,C5的feature作为bottom-up pathway的feature,将其通过1*1 conv得到lateral feature,与C3,C4,C5的feature经过upsampling以后的top-down pathway feature相加，得到金字塔的feature map:P2,P3,P4,P5.
-https://github.com/ataraxialab/faster_rcnn_pytorch/blob/dev/faster_rcnn/faster_rcnn_resnet152_imgsize600_FPN.py#L216-L247
+[https://github.com/ataraxialab/faster\_rcnn\_pytorch/blob/dev/faster\_rcnn/faster\_rcnn\_resnet152\_imgsize600\_FPN.py#L216-L247](https://github.com/ataraxialab/faster_rcnn_pytorch/blob/dev/faster_rcnn/faster_rcnn_resnet152_imgsize600_FPN.py#L216-L247).        
+
+> 具体的，由于lateral feature和top\_down pathway feature的大小可能存在不一样的情况。例如C2->C3经过pooling以后scale减小一半，如果C2尺寸为奇数，不能正好被2整除，则C3的尺寸为floor[C2的尺寸/2]+1(padding)。然后C3进行upsampling，得到尺寸为C2的尺寸+1，即top\_down pathway feature和lateral feature尺寸相差1。因此需要clip\_feature，由于两者尺寸相差不大，所以没有用中心crop，而是直接从左上角crop：     
+[https://github.com/ataraxialab/faster\_rcnn\_pytorch/blob/dev/faster\_rcnn/faster\_rcnn\_resnet152\_imgsize600\_FPN.py#L301-L306](https://github.com/ataraxialab/faster_rcnn_pytorch/blob/dev/faster_rcnn/faster_rcnn_resnet152_imgsize600_FPN.py#L301-L306)
+
 
 *	将这些层分别输入到RPN中，提取对应层级的roi。注意，这里每一层的anchor scale只要一个即可。另外，和之前有所不同，rpn的传入参数有所变化，从image变成了feature,并且加入了anchor_scales和_feat_stride两个用于generate anchor的参数。
 https://github.com/ataraxialab/faster_rcnn_pytorch/blob/dev/faster_rcnn/faster_rcnn_resnet152_imgsize600_FPN.py#L255-L258
