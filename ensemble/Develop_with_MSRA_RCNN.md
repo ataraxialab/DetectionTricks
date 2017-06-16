@@ -20,7 +20,7 @@ git clone https://github.com/msracver/Deformable-ConvNets.git
   * RFCN相关的extra operaters拷贝到mxnet中：
   ```
   cp -r ./rfcn/operator_cxx/*  $(YOUR_MXNET_FOLDER)/src/operator/contrib
-```
+  ```
   * 重新编译MXNet：用AVA的Dockerfile里的编译命令，不要用MXNet官方的命令：
   
   ```
