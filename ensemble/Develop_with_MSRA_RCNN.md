@@ -18,10 +18,9 @@ git clone https://github.com/msracver/Deformable-ConvNets.git
   sh ./init.sh
   ```
   * RFCN相关的extra operaters拷贝到mxnet中：
-  
   ```
   cp -r ./rfcn/operator_cxx/*  $(YOUR_MXNET_FOLDER)/src/operator/contrib
-  ```
+```
   * 重新编译MXNet：用AVA的Dockerfile里的编译命令，不要用MXNet官方的命令：
   
   ```
@@ -69,6 +68,19 @@ python experiments/rfcn/rfcn_end2end_train_test.py \
 --cfg experiments/rfcn/cfgs/resnet_v1_101_imagenet_rfcn_dcn_end2end_ohem.yaml
 ```
 
-## 测试
+## 训练速度测试
+| config | dataset | method | speed |
+|---|---|---|---|
+|2卡，P100|imagenet|faster_rcnn| 6.8 samples/s|
+|4卡，P100 |imagenet|faster_rcnn| 8.9 samples/s|
+|1卡，P100 |voc | deformable faster_rcnn | 4 samples/s|
+|1卡，P40 | voc | deformable faster_rcnn | 3.04 samples/s |
+|2卡, M40 | voc|deformable faster_rcnn| 6.57 samples/s|
+|1卡, M40|imagenet|deformable faster_rcnn |3.0samples/s|
+|2卡, M40|imagenet| deformable faster_rcnn | 5.37samples/s |
+|1卡, M40|voc|deformable rfcn+ohem | 2.7samples/s|
+|2卡, M40|voc|deformable rfcn+ohem |4.86samples/s|
+|2卡, M40|imagenet| deformable rfcn+ohem| 1.64samples/s|
+|4卡，P100|imagenet| deformable rfcn+ohem |6.48samples/s|
 
 

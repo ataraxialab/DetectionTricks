@@ -2,7 +2,7 @@
 ![](resources/overview.png)
 this doc will focus on **Data Loading(IO)** part.
 
-## Design Insight
+## 设计理念
 一个IO系统包含两个部分：data preparation和data loading。数据准备通常是离线做的，而数据读入则会影响实时的性能。
 ### Data Preparation
 数据准备是指将数据打包成想要的形式，用于之后的处理。对像imagenet这样的大型数据库进行数据准备，过程会很耗时，这时候我们需要考虑以下几点： 
@@ -88,8 +88,16 @@ threadediter保持一个固定大小的buffer，当buffer不满的时候自动�
 ![](resources/threadediter.png)
 
 ### MXNet IO Python Interface
-我们将IO对象表示成numpy中的iterator的形式。这样，使用者可以通过for训练或者next()函数来容易地读取数据，在MXNet中定义一个data iterator和定义一个symbolic operator一样简单。     
-以下示例代码定义了一个Cifar数据循环器。
+一般地讲，创建一个数据迭代器需要实现下面讲到的五种参数:
+
+- Dataset Param 提供数据集的基本信息, 比如说, 文件路径, 输入的数据的 shape.
+- Batch Param 提供构建一个 batch 的信息, 比如说 batch size.
+- Augmentation Param 指定输入数据的扩充方式 (e.g. crop, mirror).
+- Backend Param 控制后端线程掩盖数据加载开销的行为.
+- Auxiliary Param 提供的可选项, 用来帮助检查和 debug.
+
+通常地讲, Dataset Param 和 Batch Param 必须提供, 否则 data batch 无法创建. 其他的参数根据算法和性能的需要来设置. 
+下面的代码是如何创建一个 Cifar 的数据迭代器的代码.
 
 ```
 dataiter = mx.io.ImageRecordIter(
@@ -112,16 +120,79 @@ dataiter = mx.io.ImageRecordIter(
     # Backend Parameter, prefetch buffer size
     prefetch_buffer=1)
 ```
-通常情况下，创建一个数据循环器需要提供以下5组参数：
+从上面的代码中, 我们可以学到如何创建一个数据迭代器. 首先, 你需要明确的指出需要取哪种类型的数据(MNIST, ImageRecord 等等). 然后, 提供描述数据的可选参数, 比如 batching, 数据扩充方式, 多线程处理, 预取数据. MNNet 框架会检查参数的有效性, 如果一个必须的参数没有提供, 框架会报错.
 
-- Dataset Param：读取数据集需要的信息，例如文件路径／输入大小等。
-- Batch Param：确定如何组织batch，例如batch的大小。
-- Augmentation Param：对一张输入图片采取哪些数据放大的操作，如crop，mirror等。
-- Backend Param：控制后端线程的行为来隐藏数据读取的消耗。
-- Auxiliary Param：提供一些帮助debug的选项。
 
-通常Dataset Param和Batch Param是必须提供的，否则data batch无法创建。其他参数可以根据需要提供。理想情况下，我们应该将MX Data IO拆分成modules，其中一些开发给使用者可能有用，比如说：
+#### 自定义data iter
+MXnet中的data iterator和python中的迭代器是很相似的， 当其内置方法next被call的时候它每次返回一个databatch。所谓databatch，就是神经网络的data和label，一般是(n, c, h, w)大小的图片输入和(n)大小的label。直接上官网上的一个简单的例子来说说吧。
+    
+[dataIter](https://github.com/dmlc/mxnet/blob/4feb759fdcf401ca8b442887635a0f8425cae521/python/mxnet/io.py)
 
-- 高效的prefetcher：允许使用者写一个data loader来读取他们自定义的二值形式，并且可以自动得到多线程prefetcher的支持
-- data transformer：图像随机裁剪／镜像等。允许使用者使用这些工具，或者引入他们自定义的transformer。
+```
+import numpy as np
+class SimpleIter:
+    def __init__(self, data_names, data_shapes, data_gen,
+                 label_names, label_shapes, label_gen, num_batches=10):
+        self._provide_data = zip(data_names, data_shapes)
+        self._provide_label = zip(label_names, label_shapes)
+        self.num_batches = num_batches
+        self.data_gen = data_gen
+        self.label_gen = label_gen
+        self.cur_batch = 0
 
+    def __iter__(self):
+        return self
+
+    def reset(self):
+        self.cur_batch = 0        
+
+    def __next__(self):
+        return self.next()
+
+    @property
+    def provide_data(self):
+        return self._provide_data
+
+    @property
+    def provide_label(self):
+        return self._provide_label
+
+    def next(self):
+        if self.cur_batch < self.num_batches:
+            self.cur_batch += 1
+            data = [mx.nd.array(g(d[1])) for d,g in zip(self._provide_data, self.data_gen)]
+            assert len(data) > 0, "Empty batch data."
+            label = [mx.nd.array(g(d[1])) for d,g in zip(self._provide_label, self.label_gen)]
+            assert len(label) > 0, "Empty batch label."
+            return SimpleBatch(data, label)
+        else:
+            raise StopIteration
+```
+
+上面的代码是最简单的一个dataiter了，没有对数据的预处理，甚至于没有自己去读取数据，但是基本的意思是到了，一个dataiter必须要实现上面的几个方法，provide\_data返回的格式是(dataname, batchsize, channel, width, height)， provide\_label返回的格式是(label_name, batchsize),reset()的目的是每个epoch结束从头读取数据，通常情况下会做shuffle，即打乱读取图片的顺序，这样随机采样的话训练效果会好一点。next()的方法是用来返回你的databatch。需要注意的是，databatch返回的数据类型是mx.nd.ndarry。
+
+## Data Loading API
+### MXNet Data Iterator
+1. mxnet中的所有IO都是通过`mx.io.DataIter`类及其子类来进行处理的。   
+2. data iterators在每次请求`next`的时候则返回一个`DataBatch`，其中包括n个training examples和它们对应的labels。当读取到数据的末尾时，iterator会产生`StopIteration` exception。    
+3. 另外，像名字，形状，类型，每个训练数据的layout（NCHW）等信息可以通过`DataDesc`这个数据描述体来保存，通过`DataBatch`中的`provide_data`和`provide_label`来调用。
+4. 读取内存中的数据：NDArrayIter
+5. 读取CSV文件中的数据：CSVIter
+6. 自定义iterator:需要实现next()方法／reset()方法，提供provide_data()接口和provide_label()接口
+
+#### ImageRecordIter
+从.rec的RecordIO文件中读取image batches。这个iterator不太适合进行用户化定制，它由大量的不同语言的绑定，但是速度比较快。在raw images上进行迭代就直接使用ImageIter进行代替（是python的）。    
+代码：[imagerecordIter](https://github.com/dmlc/mxnet/blob/4feb759fdcf401ca8b442887635a0f8425cae521/src/io/iter_image_recordio_2.cc)      
+ImageRecordIter包含以下部分：
+    
+- Threaded Iter iter\_; 用于多线程预读取data batch
+- PrefetcherParam prefetch\_param\_; 预取参数
+- DataBatch *out\_; 输出
+- std::queue<DataBatch*> recycle\_queue\_; 用于回收的已使用的data batch
+- ImageRecordIOParser parser_; 解析recordIO生成数据（array）
+
+其中最重要的部分是ImageRecordIOParser，包含以下部分：   
+   
+- ParseNext():从recordIO中得到下一个DataBatch，借助ParseChunk实现
+- ParseChunk():
+- CreateMeanImg()
