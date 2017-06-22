@@ -3,7 +3,11 @@
 ## ATLAB ImageNet leaderboard
 | model | mAP | eval method | Training set | PreTrain set | Training Log | Eval Log | Base Module| config |
 | --- |---|---|---|---|---|---|---|---|
-| resnet101+deepmask | 0.5090 | [nms+box voting](https://github.com/ataraxialab/DetectionTricks/blob/dev/ensemble/BoxVoting.md) | Imagenet all | - | - | - | -| NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
+| resnet101(multiscale) + resnet152 + inceptionv3 + rcnn_dcn | 0.5238 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
+| resnet101(multiscale) +resnet152 +inceptionv3 | 0.5222 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
+| resnet101(multiscale) +deepmask +resnet152 +inceptionv3 | 0.5213 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
+| resnet101(multiscale) +deepmask +resnet152|0.5141 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
+| resnet101(multiscale) +deepmask | 0.5090 | [nms+box voting](https://github.com/ataraxialab/DetectionTricks/blob/dev/ensemble/BoxVoting.md) | Imagenet all | - | - | - | -| NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
 |[Resnet-101 std](http://op3uxikvk.bkt.clouddn.com/resnet-101-all.params)|0.4874|[test.py](https://github.com/likelyzhao/mxnet/blob/dev-faster-rcnn/example/rcnn/test.py)|ImageNet all|None|[Train](http://op3uxikvk.bkt.clouddn.com/resnet-101-all-train.log)|[Test](http://op3uxikvk.bkt.clouddn.com/resnet-101-all-test.log)|[Resnet-101 param](http://data.dmlc.ml/mxnet/models/imagenet/resnet/101-layers/resnet-101-0000.params) [Resnet 101 modeljson](http://data.dmlc.ml/mxnet/models/imagenet/resnet/101-layers/resnet-101-symbol.json)|[config](https://github.com/likelyzhao/mxnet/blob/dev-faster-rcnn/example/rcnn/rcnn/config.py)|
 |[ResNet-101 smalldb](http://op3uxikvk.bkt.clouddn.com/resnet101-params)|0.3958|[test.py](https://github.com/likelyzhao/mxnet/blob/dev-faster-rcnn/example/rcnn/test.py)|ImageNet train_0| None |[Train](http://op3uxikvk.bkt.clouddn.com/Resnet101-smalldb-train.log)|[Eval](http://op3uxikvk.bkt.clouddn.com/Resnet101-smalldb-eval.log)|[Resnet-101 param](http://data.dmlc.ml/mxnet/models/imagenet/resnet/101-layers/resnet-101-0000.params) [Resnet 101 modeljson](http://data.dmlc.ml/mxnet/models/imagenet/resnet/101-layers/resnet-101-symbol.json)|[config](https://github.com/likelyzhao/mxnet/blob/dev-faster-rcnn/example/rcnn/rcnn/config.py)
 
