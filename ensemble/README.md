@@ -48,19 +48,20 @@
 ## Results on ImageNet Full
 训练Baseline，得到最终结果
 
-| 网络                  | Original  | FPN  | RoIAlign | FPN + RoIAlign | Identity Mapping | Pretrain on LOC                          | RPN  | RCNN | Multiscale |
-| ------------------- | ---------- | ---- | -------- | -------------- | ---------------- | ---------------------------------------- | ---- | ---- |------------|
-| VGG19               |           |      |          |                |                  |                                          |      |      |
-| ResNet101           | mAP=0.482(train/test scale 600), mAP=0.4898(train scale 600/test scale 800), mAP=0.4532(train scale 600/test scale 1000) mAP=0.4456(train scale 600/test scale 400) |      |          |                |                  | 4xP4:9.5img/s Running                    |      |      | mAP=0.4973(test scale 600+800, nms+box voting), mAP=0.5005(test scale 600+800+1000, nms+box voting), mAP=0.5040(test scale 400+600+800+1000, nms+box voting)|
-| ResNet152           | @zzj      |      |          |                |                  | 1GPU(P40): 2.10samples/sec 2GPU(P40): 3.70samples/sec 4GPU(P40): 5.2samples/sec (running) |      |      |
+| 网络                  | Original  | +ratio1:4,4:1| +scale4| FPN  | RoIAlign | FPN + RoIAlign | Identity Mapping | Pretrain on LOC                          | RPN  | RCNN | Multiscale |
+| ------------------- | ---------- | ---- | -------- | -------------- | ---------------- | ---------------------------------------- | ---- | ---- |------------| -------- | -------------- |
+| VGG19               | | |          |      |          |                |                  |                                          |      |      |
+| ResNet101           | mAP=0.482(train/test scale 600), mAP=0.4898(train scale 600/test scale 800), mAP=0.4532(train scale 600/test scale 1000) mAP=0.4456(train scale 600/test scale 400) |p.s. 9 epoch result: mAP=0.4817(train/test scale 600), mAP=0.4860(train scale 600/test scale 800), mAP=0.4656(train scale 600/test scale 1000) mAP=0.4350(train scale 600/test scale 400) | p.s. 9 epoch result: mAP=0.4839(train/test scale 600), mAP=0.4824(train scale 600/test scale 800), mAP=0.4555(train scale 600/test scale 1000) mAP=0.4375(train scale 600/test scale 400) |     |          |                |                  | 4xP4:9.5img/s Running                    |      |      | mAP=0.4973(test scale 600+800, nms+box voting), mAP=0.5005(test scale 600+800+1000, nms+box voting), mAP=0.5040(test scale 400+600+800+1000, nms+box voting)|
+| ResNet152           | mAP=0.4873(train/test scale 600), mAP=0.4874(train scale 600/test scale 800), mAP=0.4655(train scale 600/test scale 1000) mAP=0.4318(train scale 600/test scale 400)   | p.s. 6 epoch result: mAP=0.4006(train/test scale 600), mAP=0.3938(train scale 600/test scale 800), mAP=0.3670(train scale 600/test scale 1000) mAP=0.3596(train scale 600/test scale 400) | p.s. 2 epoch result: mAP=0.3859(train/test scale 600), mAP=0.3537(train scale 600/test scale 800), mAP=0.3152(train scale 600/test scale 1000) mAP=0.3516(train scale 600/test scale 400)   |      |          |                |                  | 1GPU(P40): 2.10samples/sec 2GPU(P40): 3.70samples/sec 4GPU(P40): 5.2samples/sec (running) |      |      |
 | ResNet200           |           |      |          |                |                  |                                          |      |      |
 | ResNeXt50           |           |      |          |                |                  |                                          |      |      |
 | ResNeXt101          |           |      |          |                |                  |                                          |      |      |
 | ResNeXt200          |           |      |          |                |                  |                                          |      |      |
-| Inception-V3        |           |      |          |                |                  |                                          |      |      |
+| Inception-V3        | mAP=0.4892(train/test scale 600), mAP=0.4928(train scale 600/test scale 800), mAP=0.4751(train scale 600/test scale 1000) mAP=0.4257(train scale 600/test scale 400)          |      |          |                |                  |                                          |      |      |
 | Inception-ResNet-V2 |           |      |          |                |                  |                                          |      |      |
 | YOLO9000            |           |      |          |                |                  |                                          |      |      |
 | deepmask           |     mAP=0.4180      |      |          |                |                  |                                          |      |      |
+| Deformable fast_rcnn (resnet101)        | p.s. 5 epoch result: mAP=0.4681(train/test scale 600), mAP=0.4597(train scale 600/test scale 800), mAP=0.4231(train scale 600/test scale 1000) mAP=0.4249(train scale 600/test scale 400)          |      |          |                |                  |                                          |      |      |
 
 ensemble
 
