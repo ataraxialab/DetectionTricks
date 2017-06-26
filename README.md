@@ -2,7 +2,8 @@
 
 ## ATLAB ImageNet leaderboard
 | model | mAP | eval method | Training set | PreTrain set | Training Log | Eval Log | Base Module| config |
-| --- |---|---|---|---|---|---|---|---|
+| ----- |---|---|---|---|---|---|---|---|
+| resnet101 (multiscale) + resnet101 ratio1:4,4:1 (multiscale) + resnet101 scale4 (multiscale) + resnet152 (multiscale) + inceptionv3 (multiscale) + rcnn_dcn (multiscale) | 0.5295 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
 | resnet101(multiscale) + resnet152 + inceptionv3 + rcnn_dcn | 0.5238 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
 | resnet101(multiscale) +resnet152 +inceptionv3 | 0.5222 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
 | resnet101(multiscale) +deepmask +resnet152 +inceptionv3 | 0.5213 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
