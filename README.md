@@ -3,7 +3,17 @@
 ## ATLAB ImageNet leaderboard
 | model | mAP | eval method | Training set | PreTrain set | Training Log | Eval Log | Base Module| config |
 | ----- |---|---|---|---|---|---|---|---|
-| resnet101 (multiscale) + resnet101 ratio1:4,4:1 (multiscale) + resnet101 scale4 (multiscale) + resnet152 (multiscale) + inceptionv3 (multiscale) + rcnn_dcn (multiscale) | 0.5295 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
+| 【ALL】= resnet101 (multiscale) + resnet101 ratio1:4,4:1 (multiscale) + resnet101 scale4 (multiscale) + resnet152 (multiscale) + inceptionv3 (multiscale) + rcnn_dcn (multiscale) | 0.5295 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
+| 【ENS1】=【ALL】 - dcn\_rcnn (scale1000, mAP=0.4231) | 0.5301 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
+| 【ENS2】=【ENS1】 - dcn\_rcnn (scale400, mAP=0.4249) | 0.5297 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
+| 【ENS3】=【ENS2】 - inceptionv3 (scale400, mAP=0.4257)| 0.5289 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
+| 【ENS4】=【ENS3】 - resnet152 (scale400, mAP=0.4318)  - resnet101\_ratio4 (scale400, mAP=0.4350) - resnet101\_scale4 (scale400, mAP=0.4375)| 0.5289 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
+| 【ENS5】=【ALL】 - resnet152 (scale400, mAP=0.4318)  - resnet101\_ratio4 (scale400, mAP=0.4350) - resnet101\_scale4 (scale400, mAP=0.4375)| 0.5298 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
+| 【ENS6】=【ENS1】 + dcn\_rfcn (scale600, mAP=0.4695) | 0.5305 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
+| 【ENS7】=【ENS6】 - resnet101 (scale400, mAP=0.4456) | 0.5295 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
+| 【ENS8】=【ENS7】 - resnet101 (scale1000, mAP=0.4532) | 0.5301 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
+| 【ENS9】=【ENS8】 - resnet101\_scale4 (scale1000, mAP=0.4555) | 0.5296 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
+| 【ENS10】=【ENS9】 - dcn\_rfcn (scale800, mAP=0.4597) | 0.5292 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
 | resnet101(multiscale) + resnet152 + inceptionv3 + rcnn_dcn | 0.5238 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
 | resnet101(multiscale) +resnet152 +inceptionv3 | 0.5222 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
 | resnet101(multiscale) +deepmask +resnet152 +inceptionv3 | 0.5213 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
