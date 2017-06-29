@@ -61,8 +61,8 @@
 | Inception-ResNet-V2 |           |      |          |                |                  |                                          |      |      |
 | YOLO9000            |           |      |          |                |                  |                                          |      |      |
 | deepmask           |     mAP=0.4180      |      |          |                |                  |                                          |      |      |
-| Deformable fast_rcnn (resnet101)        | p.s. 5 epoch result: mAP=0.4681(train/test scale 600), mAP=0.4597(train scale 600/test scale 800), mAP=0.4231(train scale 600/test scale 1000) mAP=0.4249(train scale 600/test scale 400)          |      |          |                |                  |                                          |      |      |
-| Deformable rfcn (resnet101)        | p.s. 2 epoch result: mAP=0.4696(train/test scale 600)          |      |          |                |                  |                                          |      |      |
+| Deformable fast_rcnn (resnet101)        | p.s. 5 epoch result: mAP=0.4681(train/test scale 600), mAP=0.4597(train scale 600/test scale 800), mAP=0.4231(train scale 600/test scale 1000) mAP=0.4249(train scale 600/test scale 400)   p.s.7 epoch result: mAP=0.4885(train/test scale 600), mAP=0.4830(train scale 600/test scale 800), mAP=0.4406(train scale 600/test scale 400)        |      |          |                |                  |                                          |      |      |
+| Deformable rfcn (resnet101)        | p.s. 2 epoch result: mAP=0.4696(train/test scale 600), mAP=0.4660(train scale 600/test scale 800)  p.s. 3 epoch result: mAP=0.5002 (train/test scale 600), mAP=0.5002 (train scale 600/test scale 800)      |      |          |                |                  |                                          |      |      |
 
 ensemble
 

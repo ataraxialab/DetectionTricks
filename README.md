@@ -19,6 +19,21 @@
 | 【ENS13】=【ENS12】 - dcn\_rcnn (scale600, mAP=0.4681) | 0.5287 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
 | 【ENS14】=【ENS13】 - inceptionv3 (scale1000, mAP=0.4751) | 0.5271 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
 |【ENS15】 = resnet101 (scale400,600,800) + resnet101 ratio\_4 (scale600,800) + resnet101\_scale4 (scale600,800,1000) + resnet152 (scale600,800,1000) + inceptionv3 (scale400,600,800,1000) + rcnn\_dcn (scale400,600,800) + dcn\_rfcn (scale 600) | 0.5311 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
+|【ENS16】 = 【ENS15】- resnet101\_ratio4 (scale600, 0.4817) | 0.5311 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
+|【ENS17】 = 【ENS16】- resnet101 (scale600, 0.482) | 0.5299 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
+|【ENS18】 = 【ENS17】- resnet101\_scale4 (scale800, 0.4824) | 0.5299 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
+|【ENS19】 = 【ENS18】- resnet101\_scale4 (scale600, 0.4839) | 0.5298 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
+|【ENS20】 = 【ENS19】- resnet101\_ratio4 (scale800, 0.4860) | 0.5299 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
+|【ENS21】 = 【ENS20】- resnet152 (scale600, 0.4873) | 0.5301 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
+|【ENS22】 = 【ENS21】- resnet152 (scale800, 0.4874) | 0.5310 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
+|【ENS23】 = 【ENS22】- inceptionv3 (scale600, 0.4892) | 0.5279 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
+|【ENS24】 = 【ENS23】- resnet101 (scale800, 0.4898) | 0.5247 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
+|【ENS25】 = 【ENS24】- inceptionv3 (scale800, 0.4928) | 0.5224 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
+|【ENS26】 = resnet101 (scale400,600,800) + resnet101\_scale4 (scale600,1000) + resnet152 (scale1000) + inceptionv3 (scale400,600,800,1000) + rcnn\_dcn (scale400,600,800) + dcn\_rfcn (scale 600) | 0.5305 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
+|【ENS27】 = 【ENS15】将rcnn_dcn 5epoch(scale400,600,800)替换成7epoch | 0.5314 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
+|【ENS28】 = 【ENS27】+ rcnn_dcn (scale1000)| 0.5326 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
+|【ENS29】 = 【ENS28】+ resnet101\_ratios4\_alltricks (scale600) - resnet101\_ratios4 (scale600)| 0.5326 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
+|【ENS30】 = 【ENS29】+ rcnn_dcn (scale800) | 0.5319 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
 | resnet101(multiscale) +resnet152 +inceptionv3 | 0.5222 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
 | resnet101(multiscale) +deepmask +resnet152 +inceptionv3 | 0.5213 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
 | resnet101(multiscale) +deepmask +resnet152|0.5141 |nms+box voting | Imagenet all|-|-|-|-|NMS＝0.5 IoU_Thresh=0.5 score_Thresh=0.1 |
